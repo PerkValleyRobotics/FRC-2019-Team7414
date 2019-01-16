@@ -11,12 +11,12 @@ public class DriveTrain extends Subsystem {
 
 	//assumes that we're using PWMVictor controllers
 	private static PWMVictorSPX backLeft = new PWMVictorSPX(PortMap.driveBackLeft);
-	//private static PWMVictorSPX frontLeft = new PWMVictorSPX(PortMap.driveFrontLeft);
+	private static PWMVictorSPX frontLeft = new PWMVictorSPX(PortMap.driveFrontLeft);
 	private static PWMVictorSPX backRight = new PWMVictorSPX(PortMap.driveBackRight);
-	//private static PWMVictorSPX frontRight = new PWMVictorSPX(PortMap.driveFrontRight);
+	private static PWMVictorSPX frontRight = new PWMVictorSPX(PortMap.driveFrontRight);
 
-	private static SpeedControllerGroup leftSide = new SpeedControllerGroup(backLeft);
-	private static SpeedControllerGroup rightSide = new SpeedControllerGroup(backRight);
+	private static SpeedControllerGroup leftSide = new SpeedControllerGroup(backLeft, frontLeft);
+	private static SpeedControllerGroup rightSide = new SpeedControllerGroup(backRight, frontRight);
 	
 	private static DifferentialDrive drive = new DifferentialDrive(leftSide, rightSide);
 	
@@ -24,12 +24,8 @@ public class DriveTrain extends Subsystem {
 		 
 	}
 	
-	public void oneMotor(double left, double right) {
-
-	}
-	
 	public void drive(double left, double right) {
-		drive.tankDrive(left, right);
+		drive.arcadeDrive(left, right);
 	}
 
 	@Override
