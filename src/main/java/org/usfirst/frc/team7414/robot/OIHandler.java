@@ -4,33 +4,28 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class OIHandler {
 	
-	private static int forkliftPosition = 0;
-	
 	public static Joystick joystick1 = new Joystick(PortMap.joystick);
 	
+	//forwards and backwards
 	public double getY() {
 		return -1 * joystick1.getY();
 		//forward is positive, backward is negative
 	}
 	
+	//right and left
 	public double getX() {
 		return joystick1.getX();
 		//right is positive, left is negative
 	}
 	
+	//twist
 	public double getZ() {
 		return joystick1.getZ();
+		//right is positive, left is negative
 	}
-	
-	public double getThrottle() {
-		return joystick1.getThrottle();
+
+	public boolean getTrigger() {
+		return joystick1.getTrigger();
 	}
-	
-	public double getTwist() {
-		return joystick1.getTwist();
-	}
-	
-	public boolean triggerPressed() {
-		return joystick1.getTrigger();	
-	}
+
 }
