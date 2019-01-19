@@ -12,8 +12,9 @@ import org.usfirst.frc.team7414.robot.Subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.IterativeRobot;
 
-import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * This is a demo program showing the use of the RobotDrive class, specifically
@@ -23,18 +24,18 @@ public class Robot extends TimedRobot {
 	
 	public static OIHandler oi = new OIHandler();
 	public static DriveTrain difDrive = new DriveTrain();
-	CameraServer server;
+	public static CameraServer server;
 	
 	@Override
 	public void robotInit() {
 		server = CameraServer.getInstance();
-		server.setQuality(50);
-		server.startAutomaticCapture("cam0");
+		//server.setQuality();
+		server.startAutomaticCapture(0);
 	}
 
 	@Override
 	public void teleopPeriodic() {
-		
+		Scheduler.getInstance().run();
 	}
 	
 	public void teleOpDrive() {
