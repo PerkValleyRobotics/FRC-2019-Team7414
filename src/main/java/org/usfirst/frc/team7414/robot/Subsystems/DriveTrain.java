@@ -26,12 +26,16 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void drive(double speed, double rotation) {
-		if (rotation < .05) {
-			rotation = 0;
-		}
 		if (Robot.oi.getTrigger()) {
 			speed = 0.27;
+		} else if (Robot.oi.getMissile()) { //for better controllable driving at low speeds
+			speed /= 2.0;
+			rotation /= 2.0;
 		}
+		if (Math.abs(rotation)<.1) { //get rid of accidental drift
+			rotation = 0;
+		}
+		rotation += .05; //to compensate for drift
 		drive.arcadeDrive(speed, rotation);
 	}
 

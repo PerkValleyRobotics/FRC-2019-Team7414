@@ -28,4 +28,7 @@ public class OIHandler {
 		return joystick1.getTrigger();
 	}
 
+	public boolean getMissile() {
+		return joystick1.getRawButton(2);
+	}
 }
