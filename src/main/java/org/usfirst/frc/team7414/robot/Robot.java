@@ -14,10 +14,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 
 import edu.wpi.first.cameraserver.CameraServer;
 
-/**
- * This is a demo program showing the use of the RobotDrive class, specifically
- * it contains the code necessary to operate a robot with tank drive.
- */
 public class Robot extends TimedRobot {
 	
 	public static OIHandler oi = new OIHandler();
@@ -27,7 +23,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		server = CameraServer.getInstance();
-		//server.setQuality();
 		server.startAutomaticCapture(0);
 	}
 
