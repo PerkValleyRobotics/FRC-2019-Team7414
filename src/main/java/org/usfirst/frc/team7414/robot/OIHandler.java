@@ -31,4 +31,8 @@ public class OIHandler {
 	public boolean getMissile() {
 		return joystick1.getRawButton(2);
 	}
+
+	public boolean getButton(int button) {
+		return joystick1.getRawButton(button);
+	}
 }
