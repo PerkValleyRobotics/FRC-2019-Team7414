@@ -8,6 +8,7 @@
 package org.usfirst.frc.team7414.robot;
 
 import org.usfirst.frc.team7414.robot.Subsystems.DriveTrain;
+import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -20,6 +21,7 @@ public class Robot extends TimedRobot {
 	public static DriveTrain difDrive = new DriveTrain();
 	public static CameraServer server;
 	public static Compressor compressor;
+	public static ProximitySensor proximity;
 	
 	@Override
 	public void robotInit() {
@@ -27,6 +29,7 @@ public class Robot extends TimedRobot {
 		server.startAutomaticCapture(PortMap.camera);
 		compressor = new Compressor(PortMap.compressor);
 		compressor.setClosedLoopControl(true);
+		proximity = new ProximitySensor(PortMap.proximitySensor);
 	}
 
 	@Override

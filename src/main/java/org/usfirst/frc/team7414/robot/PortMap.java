@@ -9,9 +9,7 @@ public class PortMap {
 	public static int driveFrontLeft = 2;
 	public static int driveFrontRight = 3;
 
-	public static int proximitySensor = 0;
-	
-	public static int ultrasonic = 0;
+	public static int proximitySensor = 0; // If you want to call this "ultrasonic" lmk and I'll refactor it. - Gabe
 
 	public static int compressor = 0;
 

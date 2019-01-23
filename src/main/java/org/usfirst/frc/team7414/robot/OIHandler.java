@@ -1,12 +1,10 @@
 package org.usfirst.frc.team7414.robot;
 
-import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 import edu.wpi.first.wpilibj.Joystick;
 
 public class OIHandler {
 	
 	public static Joystick joystick1 = new Joystick(PortMap.joystick);
-	public static ProximitySensor proximitySensor1 = new ProximitySensor(PortMap.proximitySensor);
 
 	//forwards and backwards
 	public double getY() {

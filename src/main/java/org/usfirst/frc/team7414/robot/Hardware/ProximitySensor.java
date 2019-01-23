@@ -1,7 +1,5 @@
 package org.usfirst.frc.team7414.robot.Hardware;
 
-import org.usfirst.frc.team7414.robot.PortMap;
-
 import edu.wpi.first.wpilibj.AnalogInput;
 
 public class ProximitySensor {
