@@ -11,7 +11,7 @@ import org.usfirst.frc.team7414.robot.Subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.cameraserver.CameraServer;
 
 public class Robot extends TimedRobot {
@@ -19,11 +19,14 @@ public class Robot extends TimedRobot {
 	public static OIHandler oi = new OIHandler();
 	public static DriveTrain difDrive = new DriveTrain();
 	public static CameraServer server;
+	public static Compressor compressor;
 	
 	@Override
 	public void robotInit() {
 		server = CameraServer.getInstance();
-		server.startAutomaticCapture(0);
+		server.startAutomaticCapture(PortMap.camera);
+		compressor = new Compressor(PortMap.compressor);
+		compressor.setClosedLoopControl(true);
 	}
 
 	@Override

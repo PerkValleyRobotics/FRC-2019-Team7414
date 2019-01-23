@@ -9,4 +9,9 @@ public class PortMap {
 	public static int driveFrontLeft = 2;
 	public static int driveFrontRight = 3;
 	
+	public static int ultrasonic = 0;
+
+	public static int compressor = 0;
+
+	public static int camera = 0;
 }
