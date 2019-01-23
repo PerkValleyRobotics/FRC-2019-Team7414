@@ -1,14 +1,13 @@
 package org.usfirst.frc.team7414.robot;
 
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
-
 import edu.wpi.first.wpilibj.Joystick;
 
 public class OIHandler {
 	
 	public static Joystick joystick1 = new Joystick(PortMap.joystick);
 	public static ProximitySensor proximitySensor1 = new ProximitySensor(PortMap.proximitySensor);
-	
+
 	//forwards and backwards
 	public double getY() {
 		return -1 * joystick1.getY();
@@ -27,14 +26,17 @@ public class OIHandler {
 		//right is positive, left is negative
 	}
 
+	//true is pressed, false is not pressed
 	public boolean getTrigger() {
 		return joystick1.getTrigger();
 	}
 
+	//true is pressed, false is not pressed
 	public boolean getMissile() {
 		return joystick1.getRawButton(2);
 	}
 
+	//true is pressed, false is not pressed
 	public boolean getButton(int button) {
 		return joystick1.getRawButton(button);
 	}

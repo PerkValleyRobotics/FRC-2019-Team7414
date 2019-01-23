@@ -11,4 +11,9 @@ public class PortMap {
 
 	public static int proximitySensor = 0;
 	
+	public static int ultrasonic = 0;
+
+	public static int compressor = 0;
+
+	public static int camera = 0;
 }
