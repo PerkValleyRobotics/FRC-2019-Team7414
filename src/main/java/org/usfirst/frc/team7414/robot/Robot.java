@@ -11,6 +11,7 @@ import org.usfirst.frc.team7414.robot.Subsystems.DriveTrain;
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.cameraserver.CameraServer;
@@ -27,14 +28,17 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		server = CameraServer.getInstance();
 		server.startAutomaticCapture(PortMap.camera);
-		compressor = new Compressor(PortMap.compressor);
-		compressor.setClosedLoopControl(true);
+		//compressor = new Compressor(PortMap.compressor);
+		//compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
+		
 	}
 
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		double proxDistance = proximity.read();
+		//System.out.println(proxDistance);
 	}
 	
 	public void teleOpDrive() {
