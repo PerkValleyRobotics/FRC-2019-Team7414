@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
 		//compressor = new Compressor(PortMap.compressor);
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
-		firstSolenoid.set(true);	
+		firstSolenoid.set(true);
 	}
 
 	@Override
@@ -48,9 +48,9 @@ public class Robot extends TimedRobot {
 		//System.out.println(proxDistance);
 		
 		//*Checks the status of the compressors*//
-		// boolean enabled = c1.enabled();
-        // boolean pressureSwitch = c1.getPressureSwitchValue();
-        // double current = c1.getCompressorCurrent();
+		// boolean enabled = compressor.enabled();
+        // boolean pressureSwitch = compressor.getPressureSwitchValue();
+        // double current = compressor.getCompressorCurrent();
         // System.out.println(enabled);
         // System.out.println(pressureSwitch);
         // System.out.println(current);		
