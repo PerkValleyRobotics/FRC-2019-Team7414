@@ -15,11 +15,11 @@ public class Claw extends Subsystem {
     private static PWMVictorSPX clawMotor = new PWMVictorSPX(PortMap.claw); 
 
     public void pushOut() {
-        //clawMotor.set(1); //change value as necessary
+        //clawMotor.set(1); // change value as necessary
     }
 
     public void pullIn() {
-        //clawMotor.set(-1); //change value as necessary
+        //clawMotor.set(-1); // change value as necessary
     }
 
     @Override
