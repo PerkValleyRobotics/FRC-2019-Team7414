@@ -4,7 +4,7 @@ import org.usfirst.frc.team7414.robot.*;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class TeleopClawDrop extends Command {
-   
+    
     public TeleopClawDrop() {
         requires(Robot.claw);
     }
@@ -16,6 +16,6 @@ public class TeleopClawDrop extends Command {
 
     @Override
     protected void execute() {
-        
+       
     }
 }

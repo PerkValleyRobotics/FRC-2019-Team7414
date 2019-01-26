@@ -4,7 +4,7 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-//hi
+
 package org.usfirst.frc.team7414.robot;
 
 import org.usfirst.frc.team7414.robot.Subsystems.DriveTrain;
@@ -18,17 +18,18 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.cameraserver.CameraServer;
 
-
 public class Robot extends TimedRobot {
 	
 	public static OIHandler oi = new OIHandler();
 	public static DriveTrain difDrive = new DriveTrain();
 	public static Claw claw = new Claw();
 	public static Forklift lift = new Forklift();
+	
 	public static CameraServer server;
 	public static Compressor compressor;
 	public static ProximitySensor proximity;
 	public static Solenoid firstSolenoid;
+	public static Solenoid secondSolenoid;
 	
 	@Override
 	public void robotInit() {
@@ -37,13 +38,16 @@ public class Robot extends TimedRobot {
 		compressor = new Compressor(PortMap.compressor);
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
+		firstSolenoid = new Solenoid(PortMap.solenoid1);
+		secondSolenoid = new Solenoid(PortMap.solenoid2);
 		firstSolenoid.set(true);
+		secondSolenoid.set(true);
 	}
 
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		double proxDistance = proximity.read();
+	//	double proxDistance = proximity.read();
 		//System.out.println(proxDistance);
 		
 		//*Checks the status of the compressors*//
