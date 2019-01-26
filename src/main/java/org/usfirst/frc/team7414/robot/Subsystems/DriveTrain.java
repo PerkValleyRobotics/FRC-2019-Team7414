@@ -52,7 +52,6 @@ public class DriveTrain extends Subsystem {
 			drive.curvatureDrive(speed, rotation, turning);
 		} else {
 			rotation += kCompensate;
-			
 			//this will slow down the speed of the motors on the original joystick
 			speed /= 1.5;
 			rotation /= 1.5;
