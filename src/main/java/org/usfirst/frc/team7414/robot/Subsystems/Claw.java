@@ -15,7 +15,7 @@ public class Claw extends Subsystem {
     public static String state = PortMap.clawOut;
 
     private static Encoder clawEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-    private static PWMVictorSPX clawMotor = new PWMVictorSPX(PortMap.claw);
+    private static PWMVictorSPX clawMotor = new PWMVictorSPX(PortMap.claw); //
 
     public void pushOut() {
         state = PortMap.clawBetween;
