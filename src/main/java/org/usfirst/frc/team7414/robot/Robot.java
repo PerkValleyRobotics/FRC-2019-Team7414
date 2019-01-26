@@ -13,7 +13,6 @@ import org.usfirst.frc.team7414.robot.Subsystems.Forklift;
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Compressor;
@@ -35,7 +34,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		server = CameraServer.getInstance();
 		server.startAutomaticCapture(PortMap.camera);
-		//compressor = new Compressor(PortMap.compressor);
+		compressor = new Compressor(PortMap.compressor);
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
 		firstSolenoid.set(true);
@@ -48,12 +47,12 @@ public class Robot extends TimedRobot {
 		//System.out.println(proxDistance);
 		
 		//*Checks the status of the compressors*//
-		// boolean enabled = compressor.enabled();
-        // boolean pressureSwitch = compressor.getPressureSwitchValue();
-        // double current = compressor.getCompressorCurrent();
-        // System.out.println(enabled);
-        // System.out.println(pressureSwitch);
-        // System.out.println(current);		
+		boolean enabled = compressor.enabled();
+        boolean pressureSwitch = compressor.getPressureSwitchValue();
+        double current = compressor.getCompressorCurrent();
+        System.out.println(enabled);
+        System.out.println(pressureSwitch);
+        System.out.println(current);
 	}
 	
 	public void teleOpDrive() {

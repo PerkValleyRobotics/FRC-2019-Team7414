@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class TeleopClawDrop extends Command {
    
-    TeleopClawDrop() {
+    public TeleopClawDrop() {
         requires(Robot.claw);
     }
     
