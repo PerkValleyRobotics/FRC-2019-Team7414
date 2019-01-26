@@ -26,12 +26,13 @@ public class DriveTrain extends Subsystem {
 	
 	public void drive(double speed, double rotation) {
 		double kCompensate = 0.132; //compensates for drifting
+
 		if (speed < 0) {
 			kCompensate *= -1;
 		}
 
 		if (Robot.oi.getMissile()) { //for better controllable driving at low speeds
-			speed /= 1.5;
+			speed /= 1.75;
 			rotation /= 1.5;
 		}
 
@@ -51,6 +52,8 @@ public class DriveTrain extends Subsystem {
 			drive.curvatureDrive(speed, rotation, turning);
 		} else {
 			rotation += kCompensate;
+			// speed /= 1.5;
+			// rotation /= 1.5;
 			drive.arcadeDrive(speed, rotation);
 		}
 	}

@@ -8,6 +8,7 @@
 package org.usfirst.frc.team7414.robot;
 
 import org.usfirst.frc.team7414.robot.Subsystems.DriveTrain;
+import org.usfirst.frc.team7414.robot.Subsystems.Claw;
 import org.usfirst.frc.team7414.robot.Subsystems.Forklift;
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 
@@ -23,6 +24,8 @@ public class Robot extends TimedRobot {
 	
 	public static OIHandler oi = new OIHandler();
 	public static DriveTrain difDrive = new DriveTrain();
+	public static Claw claw = new Claw();
+	public static Forklift lift = new Forklift();
 	public static CameraServer server;
 	public static Compressor compressor;
 	public static ProximitySensor proximity;
@@ -43,6 +46,7 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 		double proxDistance = proximity.read();
 		//System.out.println(proxDistance);
+		
 		//*Checks the status of the compressors*//
 		// boolean enabled = c1.enabled();
         // boolean pressureSwitch = c1.getPressureSwitchValue();
