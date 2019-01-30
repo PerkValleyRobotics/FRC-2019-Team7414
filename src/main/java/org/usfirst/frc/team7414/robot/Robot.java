@@ -13,8 +13,9 @@ import org.usfirst.frc.team7414.robot.Subsystems.Forklift;
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.cameraserver.CameraServer;
 
@@ -28,8 +29,7 @@ public class Robot extends TimedRobot {
 	public static CameraServer server;
 	public static Compressor compressor;
 	public static ProximitySensor proximity;
-	public static Solenoid firstSolenoid;
-	public static Solenoid secondSolenoid;
+	public static DoubleSolenoid solenoid;
 	
 	@Override
 	public void robotInit() {
@@ -38,16 +38,15 @@ public class Robot extends TimedRobot {
 		compressor = new Compressor(PortMap.compressor);
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
-		firstSolenoid = new Solenoid(PortMap.solenoid1);
-		secondSolenoid = new Solenoid(PortMap.solenoid2);
-		firstSolenoid.set(true);
-		secondSolenoid.set(true);
+		solenoid = new DoubleSolenoid(PortMap.solenoid1, PortMap.solenoid2);
+		
+		solenoid.set(Value.kOff);
 	}
 
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-	//	double proxDistance = proximity.read();
+	    //double proxDistance = proximity.read();
 		//System.out.println(proxDistance);
 		
 		//*Checks the status of the compressors*//
