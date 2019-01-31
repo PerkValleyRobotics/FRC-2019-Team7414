@@ -58,15 +58,14 @@ public class Robot extends TimedRobot {
 		Boolean.toString(pressureSwitch);
 		Double.toString(current);
 
-		System.out.print(enabled);
+		//constantly updating value for compressors
+		System.out.println(enabled);
 		System.out.print("\r");
 		System.out.print(enabled);
-		System.out.print("\n");
-		System.out.print(pressureSwitch);
+		System.out.println(pressureSwitch);
 		System.out.print("\r");
 		System.out.print(pressureSwitch);
-		System.out.print("\n");
-		System.out.print(current);
+		System.out.println(current);
 		System.out.print("\r");
 		System.out.print(current);
 	}
