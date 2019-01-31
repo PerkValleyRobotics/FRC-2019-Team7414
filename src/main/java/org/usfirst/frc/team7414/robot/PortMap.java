@@ -5,6 +5,13 @@ public class PortMap {
 	//USB
 	public static int joystick = 0;
 	
+	//Joystick Buttons
+	public static int curvatureDrive = 1;
+	public static int missile = 2;
+	public static int straightDrive = 4;
+	public static int pistonDeActivate = 5;
+	public static int pistonActivate = 6;
+
 	//PWM
 	public static int driveBackLeft = 0;
 	public static int driveBackRight = 1;
@@ -29,4 +36,8 @@ public class PortMap {
 	public static String clawOut = "out";
 	public static String clawIn = "in";
 	public static String clawBetween = "between";
+
+	//Piston state
+	public static String pistonIn = "in";
+	public static String pistonOut = "out";
 }

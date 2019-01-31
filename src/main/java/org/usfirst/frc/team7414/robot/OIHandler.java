@@ -31,7 +31,7 @@ public class OIHandler {
 
 	//true is pressed, false is not pressed
 	public boolean getMissile() {
-		return joystick1.getRawButton(2);
+		return joystick1.getRawButton(PortMap.missile);
 	}
 
 	//true is pressed, false is not pressed

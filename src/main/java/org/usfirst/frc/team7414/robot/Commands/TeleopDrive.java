@@ -1,5 +1,6 @@
-	package org.usfirst.frc.team7414.robot.Commands;
-	import org.usfirst.frc.team7414.robot.*;
+package org.usfirst.frc.team7414.robot.Commands;
+
+import org.usfirst.frc.team7414.robot.*;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -8,6 +9,7 @@ public class TeleopDrive extends Command {
 	public TeleopDrive() {
 		requires(Robot.difDrive);
 	}
+	
 	@Override
 	protected boolean isFinished() {
 		return false;

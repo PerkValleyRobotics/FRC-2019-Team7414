@@ -40,7 +40,7 @@ public class DriveTrain extends Subsystem {
 			rotation = 0;
 		}
 
-		if (Robot.oi.getButton(4)) { //slow, straight driving mostly for debugging
+		if (Robot.oi.getButton(PortMap.straightDrive)) { //slow, straight driving mostly for debugging
 			speed = .4;
 			rotation = Math.abs(kCompensate);
 			drive.arcadeDrive(speed, rotation);

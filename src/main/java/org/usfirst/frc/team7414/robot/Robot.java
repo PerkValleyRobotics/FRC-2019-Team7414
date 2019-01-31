@@ -7,15 +7,12 @@
 
 package org.usfirst.frc.team7414.robot;
 
-import org.usfirst.frc.team7414.robot.Subsystems.DriveTrain;
-import org.usfirst.frc.team7414.robot.Subsystems.Claw;
-import org.usfirst.frc.team7414.robot.Subsystems.Forklift;
+import org.usfirst.frc.team7414.robot.Subsystems.*;
+
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.cameraserver.CameraServer;
 
@@ -24,12 +21,11 @@ public class Robot extends TimedRobot {
 	public static OIHandler oi = new OIHandler();
 	public static DriveTrain difDrive = new DriveTrain();
 	public static Claw claw = new Claw();
-	public static Forklift lift = new Forklift();
+	public static Arm arm = new Arm();
 	
 	public static CameraServer server;
 	public static Compressor compressor;
 	public static ProximitySensor proximity;
-	public static DoubleSolenoid solenoid;
 	public static String vision;
 	
 	@Override
@@ -39,10 +35,8 @@ public class Robot extends TimedRobot {
 		compressor = new Compressor(PortMap.compressor);
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
-		solenoid = new DoubleSolenoid(PortMap.solenoid1, PortMap.solenoid2);
-		server.getVideo();
-		server.putVideo(vision, 320, 240);
-		solenoid.set(Value.kOff);
+		//server.getVideo();
+		//server.putVideo(vision, 320, 240);
 	}
 
 	@Override
@@ -73,7 +67,4 @@ public class Robot extends TimedRobot {
 		System.out.print("Current: " + current);
 	}
 	
-	public void teleOpDrive() {
-		 difDrive.drive(oi.getY(), oi.getX());
-	}
 }
