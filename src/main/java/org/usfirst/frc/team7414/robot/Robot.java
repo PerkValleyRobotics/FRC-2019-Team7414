@@ -59,15 +59,16 @@ public class Robot extends TimedRobot {
 		Double.toString(current);
 
 		//constantly updating value for compressors
-		System.out.println(enabled);
+
+		System.out.println("Enabled? " + enabled);
 		System.out.print("\r");
-		System.out.print(enabled);
-		System.out.println(pressureSwitch);
+		System.out.print("Enabled? " + enabled);
+		System.out.println("Pressure Switch Value: " + pressureSwitch);
 		System.out.print("\r");
-		System.out.print(pressureSwitch);
-		System.out.println(current);
+		System.out.print("Pressure Switch Value: " + pressureSwitch);
+		System.out.println("Current: " + current);
 		System.out.print("\r");
-		System.out.print(current);
+		System.out.print("Current: " + current);
 	}
 	
 	public void teleOpDrive() {
