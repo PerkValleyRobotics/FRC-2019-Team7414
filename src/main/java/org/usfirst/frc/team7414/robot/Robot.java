@@ -52,10 +52,23 @@ public class Robot extends TimedRobot {
 		//*Checks the status of the compressors*//
 		boolean enabled = compressor.enabled();
         boolean pressureSwitch = compressor.getPressureSwitchValue();
-        double current = compressor.getCompressorCurrent();
-        System.out.println(enabled);
-        System.out.println(pressureSwitch);
-        System.out.println(current);
+		double current = compressor.getCompressorCurrent();
+
+		Boolean.toString(enabled);
+		Boolean.toString(pressureSwitch);
+		Double.toString(current);
+
+		System.out.print(enabled);
+		System.out.print("\r");
+		System.out.print(enabled);
+		System.out.print("\n");
+		System.out.print(pressureSwitch);
+		System.out.print("\r");
+		System.out.print(pressureSwitch);
+		System.out.print("\n");
+		System.out.print(current);
+		System.out.print("\r");
+		System.out.print(current);
 	}
 	
 	public void teleOpDrive() {
