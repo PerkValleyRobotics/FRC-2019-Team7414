@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
 	public static Compressor compressor;
 	public static ProximitySensor proximity;
 	public static DoubleSolenoid solenoid;
+	public static String vision;
 	
 	@Override
 	public void robotInit() {
@@ -39,7 +40,8 @@ public class Robot extends TimedRobot {
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
 		solenoid = new DoubleSolenoid(PortMap.solenoid1, PortMap.solenoid2);
-		
+		server.getVideo();
+		server.putVideo(vision, 320, 240);
 		solenoid.set(Value.kOff);
 	}
 
