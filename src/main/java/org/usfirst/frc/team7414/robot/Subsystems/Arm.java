@@ -3,6 +3,7 @@ package org.usfirst.frc.team7414.robot.Subsystems;
 import org.usfirst.frc.team7414.robot.PortMap;
 import org.usfirst.frc.team7414.robot.Robot;
 import org.usfirst.frc.team7414.robot.Commands.TeleopArm;
+import org.usfirst.frc.team7414.robot.States.PistonState;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -11,11 +12,11 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 public class Arm extends Subsystem {
     
     DoubleSolenoid solenoid;
-    String state;
+    PistonState state;
 
     public Arm() {
         solenoid = new DoubleSolenoid(PortMap.solenoid1, PortMap.solenoid2);
-        state = PortMap.pistonIn;
+        state = PistonState.IN;
     }
     
     protected void initDefaultCommand() {
@@ -23,12 +24,12 @@ public class Arm extends Subsystem {
     }
     
     public void actuate() {
-        if (Robot.oi.getButton(PortMap.pistonActivate) && state.equals(PortMap.pistonIn)) {
+        if (Robot.oi.getButton(PortMap.pistonActivate) && state.equals(PistonState.IN)) {
             solenoid.set(Value.kForward);
-            state = PortMap.pistonOut;
-        } else if (Robot.oi.getButton(PortMap.pistonDeActivate) && state.equals(PortMap.pistonOut)) {
+            state = PistonState.OUT;
+        } else if (Robot.oi.getButton(PortMap.pistonDeActivate) && state.equals(PistonState.OUT)) {
             solenoid.set(Value.kOff);
-            state = PortMap.pistonIn;
+            state = PistonState.IN;
         }
     }
 }

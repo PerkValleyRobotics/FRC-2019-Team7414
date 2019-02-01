@@ -32,12 +32,7 @@ public class PortMap {
 	//Wherever the camera goes, idk
 	public static int camera = 0;
 
-	//Claw states
-	public static String clawOut = "out";
-	public static String clawIn = "in";
-	public static String clawBetween = "between";
-
-	//Piston state
-	public static String pistonIn = "in";
-	public static String pistonOut = "out";
+	//Claw states have been moved to a State enum
+	//Piston states have also been moved to a State enum
+	
 }
