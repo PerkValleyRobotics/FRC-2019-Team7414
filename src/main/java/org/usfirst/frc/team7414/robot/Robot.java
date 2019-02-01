@@ -19,8 +19,8 @@ import edu.wpi.first.cameraserver.CameraServer;
 public class Robot extends TimedRobot {
 	
 	public static OIHandler oi = new OIHandler();
-	//public static DriveTrain difDrive = new DriveTrain();
-	//public static Claw claw = new Claw();
+	public static DriveTrain difDrive = new DriveTrain();
+	public static Claw claw = new Claw();
 	public static Arm arm = new Arm();
 	
 	public static CameraServer server;
@@ -30,13 +30,13 @@ public class Robot extends TimedRobot {
 	
 	@Override
 	public void robotInit() {
-		//server = CameraServer.getInstance();
-		//server.startAutomaticCapture(PortMap.camera);
+		server = CameraServer.getInstance();
+		server.startAutomaticCapture(PortMap.camera);
 		compressor = new Compressor(PortMap.compressor);
 		compressor.setClosedLoopControl(true);
-		//proximity = new ProximitySensor(PortMap.proximitySensor);
-		//server.getVideo();
-		//server.putVideo(vision, 320, 240);
+		proximity = new ProximitySensor(PortMap.proximitySensor);
+		server.getVideo();
+		server.putVideo(vision, 320, 240);
 	}
 
 	@Override

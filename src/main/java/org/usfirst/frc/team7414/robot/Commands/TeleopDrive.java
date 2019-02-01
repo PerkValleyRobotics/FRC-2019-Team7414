@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TeleopDrive extends Command {
 
 	public TeleopDrive() {
-	//	requires(Robot.difDrive);
+		requires(Robot.difDrive);
 	}
 	
 	@Override
@@ -16,6 +16,6 @@ public class TeleopDrive extends Command {
 	}
 	
 	protected void execute() {
-	//	Robot.difDrive.drive(Robot.oi.getY(), Robot.oi.getX());
+		Robot.difDrive.drive(Robot.oi.getY(), Robot.oi.getX());
 	}
 }

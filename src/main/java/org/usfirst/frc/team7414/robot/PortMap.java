@@ -31,8 +31,5 @@ public class PortMap {
 
 	//Wherever the camera goes, idk
 	public static int camera = 0;
-
-	//Claw states have been moved to a State enum
-	//Piston states have also been moved to a State enum
 	
 }
