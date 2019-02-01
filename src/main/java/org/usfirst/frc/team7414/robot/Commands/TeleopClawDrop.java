@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TeleopClawDrop extends Command {
     
     public TeleopClawDrop() {
-        requires(Robot.claw);
+        //requires(Robot.claw);
     }
     
     @Override

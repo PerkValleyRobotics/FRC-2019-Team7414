@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TeleopClaw extends Command {
     
     public TeleopClaw() {
-        requires(Robot.claw);
+        //requires(Robot.claw);
     }
     
     @Override
@@ -19,11 +19,11 @@ public class TeleopClaw extends Command {
     @Override
     protected void execute() {
         if (Claw.state.equals(ClawState.IN)) {
-            Robot.claw.pushOut();
+          //  Robot.claw.pushOut();
         } else if (Claw.state.equals(ClawState.OUT)) {
-            Robot.claw.pullIn();
+            //Robot.claw.pullIn();
         } else if (Claw.state.equals(ClawState.BETWEEN)) {
-            Robot.claw.pullIn();
+            //Robot.claw.pullIn();
         }
     }
 }

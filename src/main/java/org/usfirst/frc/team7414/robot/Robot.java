@@ -19,8 +19,8 @@ import edu.wpi.first.cameraserver.CameraServer;
 public class Robot extends TimedRobot {
 	
 	public static OIHandler oi = new OIHandler();
-	public static DriveTrain difDrive = new DriveTrain();
-	public static Claw claw = new Claw();
+	//public static DriveTrain difDrive = new DriveTrain();
+	//public static Claw claw = new Claw();
 	public static Arm arm = new Arm();
 	
 	public static CameraServer server;
@@ -30,11 +30,11 @@ public class Robot extends TimedRobot {
 	
 	@Override
 	public void robotInit() {
-		server = CameraServer.getInstance();
-		server.startAutomaticCapture(PortMap.camera);
+		//server = CameraServer.getInstance();
+		//server.startAutomaticCapture(PortMap.camera);
 		compressor = new Compressor(PortMap.compressor);
 		compressor.setClosedLoopControl(true);
-		proximity = new ProximitySensor(PortMap.proximitySensor);
+		//proximity = new ProximitySensor(PortMap.proximitySensor);
 		//server.getVideo();
 		//server.putVideo(vision, 320, 240);
 	}
@@ -46,7 +46,7 @@ public class Robot extends TimedRobot {
 		//System.out.println(proxDistance);
 		
 		//*Checks the status of the compressors*//
-		boolean enabled = compressor.enabled();
+		/*boolean enabled = compressor.enabled();
         boolean pressureSwitch = compressor.getPressureSwitchValue();
 		double current = compressor.getCompressorCurrent();
 
@@ -64,7 +64,7 @@ public class Robot extends TimedRobot {
 		System.out.print("Pressure Switch Value: " + pressureSwitch);
 		System.out.println("Current: " + current);
 		System.out.print("\r");
-		System.out.print("Current: " + current);
+		System.out.print("Current: " + current);*/
 	}
 	
 }

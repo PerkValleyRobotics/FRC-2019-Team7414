@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Claw extends Subsystem {
 
-
     public static ClawState state = ClawState.OUT;
 
     private static Encoder clawEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);

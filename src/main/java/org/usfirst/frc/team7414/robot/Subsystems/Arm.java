@@ -15,7 +15,8 @@ public class Arm extends Subsystem {
     PistonState state;
 
     public Arm() {
-        solenoid = new DoubleSolenoid(PortMap.solenoid1, PortMap.solenoid2);
+        solenoid = new DoubleSolenoid(PortMap.compressor, PortMap.solenoid1, PortMap.solenoid2);
+        solenoid.set(Value.kForward);
         state = PistonState.IN;
     }
     
@@ -25,10 +26,10 @@ public class Arm extends Subsystem {
     
     public void actuate() {
         if (Robot.oi.getButton(PortMap.pistonActivate) && state.equals(PistonState.IN)) {
-            solenoid.set(Value.kForward);
+            solenoid.set(Value.kReverse);
             state = PistonState.OUT;
         } else if (Robot.oi.getButton(PortMap.pistonDeActivate) && state.equals(PistonState.OUT)) {
-            solenoid.set(Value.kOff);
+            solenoid.set(Value.kForward);
             state = PistonState.IN;
         }
     }
