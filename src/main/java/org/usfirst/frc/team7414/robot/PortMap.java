@@ -29,7 +29,6 @@ public class PortMap {
 	public static int solenoid1 = 0;
 	public static int solenoid2 = 1;
 
-	//Wherever the camera goes, idk
 	public static int camera = 0;
 	
 }
