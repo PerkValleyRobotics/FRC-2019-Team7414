@@ -25,8 +25,8 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void drive(double speed, double rotation) {
-		double kCompensate = 0.132; //compensates for drifting
-		kCompensate = 0.0;
+		double kCompensate = 0.132; //old drivetrain value
+		kCompensate = -0.1; //new drivetrain value
 		if (speed < 0) {
 			kCompensate *= -1;
 		}
@@ -49,7 +49,6 @@ public class DriveTrain extends Subsystem {
 		} else {
 			rotation += kCompensate;
 			//this will slow down the speed of the motors based on the joystick w/o button use
-			speed /= 1.5;
 			rotation /= 1.4;
 			drive.arcadeDrive(speed, rotation);
 		}
