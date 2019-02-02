@@ -34,7 +34,7 @@ public class Robot extends TimedRobot {
 		server = CameraServer.getInstance();
 		server.startAutomaticCapture(PortMap.camera);
 		compressor = new Compressor(PortMap.compressor);
-		compressor.setClosedLoopControl(true);
+		compressor.setClosedLoopControl(false);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
 		//server.getVideo();
 		//server.putVideo(vision, 320, 240);
@@ -43,20 +43,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-	    //double proxDistance = proximity.read();
-		//System.out.println(proxDistance);
 		
-		//*Checks the status of the compressors*//
-		String enabled = Boolean.toString(compressor.enabled());
-        String pressureSwitch = Boolean.toString(compressor.getPressureSwitchValue());
-		String current = Double.toString(compressor.getCompressorCurrent());
-
 		//constantly updating value for compressors
-
-		SmartDashboard.putString("Compressor enabled:", enabled);
-		SmartDashboard.putString("Pressure Switch:", pressureSwitch);
-		SmartDashboard.putString("Current:", current);
-		
+		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
+		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
+		SmartDashboard.putString("Current:", Double.toString((double)((int)(compressor.getCompressorCurrent()*100))/100));
+		SmartDashboard.putString("Range:", Double.toString(proximity.read()));
 		/*System.out.println("Enabled? " + enabled);
 		System.out.print("\r");
 		System.out.print("Enabled? " + enabled);
