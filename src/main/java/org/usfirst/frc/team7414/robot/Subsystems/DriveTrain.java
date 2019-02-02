@@ -26,18 +26,14 @@ public class DriveTrain extends Subsystem {
 	
 	public void drive(double speed, double rotation) {
 		double kCompensate = 0.132; //compensates for drifting
-
+		kCompensate = 0.0;
 		if (speed < 0) {
 			kCompensate *= -1;
 		}
 
 		if (Robot.oi.getMissile()) { //for better controllable driving at low speeds
 			speed /= 1.75;
-			rotation /= 1.5;
-		}
-
-		if (Math.abs(rotation)<.05) { //get rid of accidental drift
-			rotation = 0;
+			rotation /= 1.3;
 		}
 
 		if (Robot.oi.getButton(PortMap.straightDrive)) { //slow, straight driving mostly for debugging
@@ -45,7 +41,7 @@ public class DriveTrain extends Subsystem {
 			rotation = Math.abs(kCompensate);
 			drive.arcadeDrive(speed, rotation);
 		} else if (Robot.oi.getTrigger()) { //for better control when attempting to go straight
-			boolean turning = Math.abs(speed)<.15 && Math.abs(rotation)>.2;
+			boolean turning = Math.abs(speed)<.35 && Math.abs(rotation)>.1;
 			speed /= 2.0; //curvatureDrive is significantly faster than arcadeDrive, for some reason
 			rotation /= 3.0;
 			rotation += kCompensate;
@@ -54,7 +50,7 @@ public class DriveTrain extends Subsystem {
 			rotation += kCompensate;
 			//this will slow down the speed of the motors based on the joystick w/o button use
 			speed /= 1.5;
-			rotation /= 1.5;
+			rotation /= 1.4;
 			drive.arcadeDrive(speed, rotation);
 		}
 	}

@@ -18,8 +18,9 @@ public class Claw extends Subsystem {
     public void pushOut() {
         state = ClawState.BETWEEN;
         while (clawEncoder.getDistance()<1230847) { //some number of encoder ticks that will be measured later
-            clawMotor.set(.02);
+            clawMotor.set(.02); //very low speed
         }
+        clawMotor.set(0);
         state = ClawState.OUT;
     }
 
@@ -29,6 +30,7 @@ public class Claw extends Subsystem {
             clawMotor.set(-.02);
         }
         state = ClawState.IN;
+        clawMotor.set(0);
     }
 
     @Override

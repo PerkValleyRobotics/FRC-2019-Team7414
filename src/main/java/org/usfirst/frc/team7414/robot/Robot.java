@@ -20,7 +20,7 @@ public class Robot extends TimedRobot {
 	
 	public static OIHandler oi = new OIHandler();
 	public static DriveTrain difDrive = new DriveTrain();
-	public static Claw claw = new Claw();
+	//public static Claw claw = new Claw();
 	public static Arm arm = new Arm();
 	
 	public static CameraServer server;
@@ -35,8 +35,8 @@ public class Robot extends TimedRobot {
 		compressor = new Compressor(PortMap.compressor);
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
-		server.getVideo();
-		server.putVideo(vision, 320, 240);
+		//server.getVideo();
+		//server.putVideo(vision, 320, 240);
 	}
 
 	@Override
