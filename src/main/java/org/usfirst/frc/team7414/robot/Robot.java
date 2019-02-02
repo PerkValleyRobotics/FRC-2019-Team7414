@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 public class Robot extends TimedRobot {
 	
@@ -46,17 +47,17 @@ public class Robot extends TimedRobot {
 		//System.out.println(proxDistance);
 		
 		//*Checks the status of the compressors*//
-		/*boolean enabled = compressor.enabled();
-        boolean pressureSwitch = compressor.getPressureSwitchValue();
-		double current = compressor.getCompressorCurrent();
-
-		Boolean.toString(enabled);
-		Boolean.toString(pressureSwitch);
-		Double.toString(current);
+		String enabled = Boolean.toString(compressor.enabled());
+        String pressureSwitch = Boolean.toString(compressor.getPressureSwitchValue());
+		String current = Double.toString(compressor.getCompressorCurrent());
 
 		//constantly updating value for compressors
 
-		System.out.println("Enabled? " + enabled);
+		SmartDashboard.putString("Compressor enabled:", enabled);
+		SmartDashboard.putString("Pressure Switch:", pressureSwitch);
+		SmartDashboard.putString("Current:", current);
+		
+		/*System.out.println("Enabled? " + enabled);
 		System.out.print("\r");
 		System.out.print("Enabled? " + enabled);
 		System.out.println("Pressure Switch Value: " + pressureSwitch);
@@ -66,5 +67,4 @@ public class Robot extends TimedRobot {
 		System.out.print("\r");
 		System.out.print("Current: " + current);*/
 	}
-	
 }
