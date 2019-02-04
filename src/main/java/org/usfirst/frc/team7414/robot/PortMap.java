@@ -23,7 +23,7 @@ public class PortMap {
 	public static int proximitySensor = 0;
 
 	//CAN Bus
-	public static int compressor = 1;
+	public static int pcm = 1;
 	
 	//PCM
 	public static int solenoid1 = 0;

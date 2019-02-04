@@ -15,7 +15,7 @@ public class Arm extends Subsystem {
     PistonState state;
 
     public Arm() {
-        solenoid = new DoubleSolenoid(PortMap.compressor, PortMap.solenoid1, PortMap.solenoid2);
+        solenoid = new DoubleSolenoid(PortMap.pcm, PortMap.solenoid1, PortMap.solenoid2);
         solenoid.set(Value.kReverse);
         state = PistonState.IN;
     }
