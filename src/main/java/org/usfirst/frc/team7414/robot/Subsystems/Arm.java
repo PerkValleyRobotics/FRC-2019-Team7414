@@ -25,12 +25,14 @@ public class Arm extends Subsystem {
     }
     
     public void actuate() {
-        if (Robot.oi.getButton(PortMap.pistonActivate) && state.equals(PistonState.IN)) {
+        if (Robot.oi.getButton(PortMap.pistonActivate)) {
             solenoid.set(Value.kForward);
             state = PistonState.OUT;
-        } else if (Robot.oi.getButton(PortMap.pistonDeActivate) && state.equals(PistonState.OUT)) {
+        } else if (Robot.oi.getButton(PortMap.pistonDeActivate)) {
             solenoid.set(Value.kReverse);
             state = PistonState.IN;
+        } else {
+            solenoid.set(Value.kOff);
         }
     }
 

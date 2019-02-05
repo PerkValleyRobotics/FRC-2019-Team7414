@@ -23,6 +23,7 @@ public class PortMap {
 	public static int proximitySensor = 0;
 
 	//CAN Bus
+	public static int pdp = 0;
 	public static int pcm = 1;
 	
 	//PCM

@@ -6,7 +6,12 @@ import edu.wpi.first.wpilibj.SolenoidBase;
 import java.util.List;
 import java.util.ArrayList;
 
-public class PCMMonitor extends FaultMonitor {
+/* This class is abstract because it it does not work!
+ * Calling SolenoidBase results in this: ERROR 1015 HAL: 
+ * Incompatible State: The operation cannot be completed 
+ * PCMMonitor.getFaults(PCMMonitor.java:20) 
+ * I have read somewhere that this is a bug in wpilib */
+public abstract class PCMMonitor extends FaultMonitor {
     private int moduleNumber;
     private Compressor compressor;
 
