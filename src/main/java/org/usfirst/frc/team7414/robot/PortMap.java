@@ -11,6 +11,8 @@ public class PortMap {
 	public static int straightDrive = 4;
 	public static int pistonDeActivate = 5;
 	public static int pistonActivate = 6;
+	public static int moveLeft = 11;
+	public static int moveRight = 12;
 
 	//PWM
 	public static int driveBackLeft = 0;

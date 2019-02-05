@@ -7,6 +7,7 @@ import org.usfirst.frc.team7414.robot.Commands.TeleopDrive;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.Encoder;
 
 public class DriveTrain extends Subsystem {
 
@@ -20,10 +21,18 @@ public class DriveTrain extends Subsystem {
 	
 	private static DifferentialDrive drive = new DifferentialDrive(leftSide, rightSide);
 	
+	private static Encoder leftEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+	private static Encoder rightEncoder = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
+
 	public DriveTrain() {
 		 
 	}
 	
+	@Override
+	protected void initDefaultCommand() {
+		setDefaultCommand(new TeleopDrive());
+	}
+
 	public void drive(double speed, double rotation) {
 		double kCompensate = 0.132; //old drivetrain value
 		kCompensate = -0.1; //new drivetrain value
@@ -35,8 +44,11 @@ public class DriveTrain extends Subsystem {
 			speed /= 1.75;
 			rotation /= 1.3;
 		}
+		if (Robot.oi.getButton(11)) {
 
-		if (Robot.oi.getButton(PortMap.straightDrive)) { //slow, straight driving mostly for debugging
+		} else if (Robot.oi.getButton(12)) {
+
+		} else if (Robot.oi.getButton(PortMap.straightDrive)) { //slow, straight driving mostly for debugging
 			speed = .4;
 			rotation = Math.abs(kCompensate);
 			drive.arcadeDrive(speed, rotation);
@@ -54,8 +66,31 @@ public class DriveTrain extends Subsystem {
 		}
 	}
 
-	@Override
-	protected void initDefaultCommand() {
-		setDefaultCommand(new TeleopDrive());
+	public void moveLeft() {
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.get()>-2) { //arbitrary number, needs to be tested
+			drive.tankDrive(-0.4, 0.3);
+		}
+		drive.tankDrive(0, 0);
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (rightEncoder.get()>-2) { //arbitrary number, needs to be tested
+			drive.tankDrive(0.3, -0.4);
+		}
+	}
+
+	public void moveRight() {
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (rightEncoder.get()<2) { //arbitrary number, needs to be tested
+			drive.tankDrive(-0.3, 0.4);
+		}
+		drive.tankDrive(0, 0);
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.get()<2) { //arbitrary number, needs to be tested
+			drive.tankDrive(0.4, -0.3);
+		}
 	}
 }
