@@ -17,6 +17,7 @@ import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 import org.usfirst.frc.team7414.robot.Monitors.PCMMonitor;
 import org.usfirst.frc.team7414.robot.Commands.TeleopMoveLeft;
 import org.usfirst.frc.team7414.robot.Commands.TeleopMoveRight;
+import org.usfirst.frc.team7414.robot.Commands.TeleopArmPush;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -37,9 +38,6 @@ public class Robot extends TimedRobot {
 	public static String vision;
 	public static PCMMonitor pcmmonitor;
 
-	public static boolean button11Flag = false;
-	public static boolean button12Flag = false;
-
 	@Override
 	public void robotInit() {
 		server = CameraServer.getInstance();
@@ -55,14 +53,14 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		if (oi.getButtonPressed(11)) {
+		if (oi.getButtonPressed(PortMap.moveLeft)) {
 			Scheduler.getInstance().add(new TeleopMoveLeft());
 		}
-		if (oi.getButtonPressed(12)) {
+		if (oi.getButtonPressed(PortMap.moveRight)) {
 			Scheduler.getInstance().add(new TeleopMoveRight());	
 		}
-		if (oi.getButtonPressed(8)) {
-			Scheduler.getInstance().add(new TeleopArmPush())
+		if (oi.getButtonPressed(PortMap.pushPistonsToggle)) {
+			Scheduler.getInstance().add(new TeleopArmPush());
 		}
 		//constantly updating value for compressors
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());

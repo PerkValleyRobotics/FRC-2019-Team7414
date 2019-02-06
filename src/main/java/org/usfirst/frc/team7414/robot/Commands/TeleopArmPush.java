@@ -12,13 +12,12 @@ public class TeleopArmPush extends Command {
         requires(Robot.arm);
     }
 
-    public boolean isFinished(){
-
+    public boolean isFinished() {
         return finished;
     }
 
-    public void execute(){
-        Robot.arm.toggleArmPiston();
+    public void execute() {
+        Robot.arm.actuatePushPistons();
         finished = true;
     }
 }

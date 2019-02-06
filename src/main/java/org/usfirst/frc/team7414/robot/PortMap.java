@@ -9,8 +9,9 @@ public class PortMap {
 	public static int curvatureDrive = 1;
 	public static int missile = 2;
 	public static int straightDrive = 4;
-	public static int pistonDeActivate = 5;
-	public static int pistonActivate = 6;
+	public static int liftPistonDeActivate = 5;
+	public static int liftPistonToggle = 6;
+	public static int pushPistonsToggle = 8;
 	public static int moveLeft = 11;
 	public static int moveRight = 12;
 
@@ -29,10 +30,12 @@ public class PortMap {
 	public static int pcm = 1;
 	
 	//PCM
-	public static int solenoid1 = 0;
-	public static int solenoid2 = 1;
-	public static int solenoid3 = 2;
-	public static int solenoid4 = 3;
+	public static int liftSolenoid1 = 0;
+	public static int liftSolenoid2 = 1;
+	public static int pushSolenoid1 = 2;
+	public static int pushSolenoid2 = 3;
+	public static int pushSolenoid3 = 4;
+	public static int pushSolenoid4 = 5;
 
 	public static int camera = 0;
 	
