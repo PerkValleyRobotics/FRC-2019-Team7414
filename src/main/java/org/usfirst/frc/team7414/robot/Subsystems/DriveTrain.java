@@ -99,4 +99,8 @@ public class DriveTrain extends Subsystem {
 		rotation += compensation;
 		drive.curvatureDrive(speed, rotation, turning);
 	}
+
+	public void stop() {
+		drive.arcadeDrive(0, 0);
+	}
 }

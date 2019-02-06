@@ -38,4 +38,8 @@ public class OIHandler {
 	public boolean getButton(int button) {
 		return joystick1.getRawButton(button);
 	}
+
+	public boolean getButtonPressed(int button) {
+		return joystick1.getRawButtonPressed(button);
+	}
 }

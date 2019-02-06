@@ -15,6 +15,8 @@ import java.util.List;
 
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 import org.usfirst.frc.team7414.robot.Monitors.PCMMonitor;
+import org.usfirst.frc.team7414.robot.Commands.TeleopMoveLeft;
+import org.usfirst.frc.team7414.robot.Commands.TeleopMoveRight;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -34,7 +36,10 @@ public class Robot extends TimedRobot {
 	public static ProximitySensor proximity;
 	public static String vision;
 	public static PCMMonitor pcmmonitor;
-	
+
+	public static boolean button11Flag = false;
+	public static boolean button12Flag = false;
+
 	@Override
 	public void robotInit() {
 		server = CameraServer.getInstance();
@@ -50,7 +55,13 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		
+		if (oi.getButtonPressed(11)) {
+			Scheduler.getInstance().add(new TeleopMoveLeft());
+		}
+		if (oi.getButtonPressed(12)) {
+			Scheduler.getInstance().add(new TeleopMoveRight());	
+		}
+
 		//constantly updating value for compressors
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
