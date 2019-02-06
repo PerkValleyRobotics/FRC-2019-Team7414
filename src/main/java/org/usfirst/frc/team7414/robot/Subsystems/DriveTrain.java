@@ -45,19 +45,13 @@ public class DriveTrain extends Subsystem {
 			rotation /= 1.3;
 		}
 		if (Robot.oi.getButton(11)) {
-
+			moveLeft();
 		} else if (Robot.oi.getButton(12)) {
-
-		} else if (Robot.oi.getButton(PortMap.straightDrive)) { //slow, straight driving mostly for debugging
-			speed = .4;
-			rotation = Math.abs(kCompensate);
-			drive.arcadeDrive(speed, rotation);
+			moveRight();
+		} else if (Robot.oi.getButton(PortMap.straightDrive)) {
+			straightDrive(kCompensate);
 		} else if (Robot.oi.getTrigger()) { //for better control when attempting to go straight
-			boolean turning = Math.abs(speed)<.35 && Math.abs(rotation)>.1;
-			speed /= 2.0; //curvatureDrive is significantly faster than arcadeDrive, for some reason
-			rotation /= 3.0;
-			rotation += kCompensate;
-			drive.curvatureDrive(speed, rotation, turning);
+			triggerDrive(speed, rotation, kCompensate);
 		} else {
 			rotation += kCompensate;
 			//this will slow down the speed of the motors based on the joystick w/o button use
@@ -92,5 +86,17 @@ public class DriveTrain extends Subsystem {
 		while (leftEncoder.get()<2) { //arbitrary number, needs to be tested
 			drive.tankDrive(0.4, -0.3);
 		}
+	}
+
+	public void straightDrive(double compensation) {
+		drive.arcadeDrive(0.4, compensation);
+	}
+
+	public void triggerDrive(double speed, double rotation, double compensation) {
+		boolean turning = Math.abs(speed)<.35 && Math.abs(rotation)>.1;
+		speed /= 2.0; //curvatureDrive is significantly faster than arcadeDrive, for some reason
+		rotation /= 3.0;
+		rotation += compensation;
+		drive.curvatureDrive(speed, rotation, turning);
 	}
 }
