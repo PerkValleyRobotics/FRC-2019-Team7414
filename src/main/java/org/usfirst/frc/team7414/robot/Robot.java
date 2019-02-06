@@ -61,7 +61,9 @@ public class Robot extends TimedRobot {
 		if (oi.getButtonPressed(12)) {
 			Scheduler.getInstance().add(new TeleopMoveRight());	
 		}
-
+		if (oi.getButtonPressed(8)) {
+			Scheduler.getInstance().add(new TeleopArmPush())
+		}
 		//constantly updating value for compressors
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());

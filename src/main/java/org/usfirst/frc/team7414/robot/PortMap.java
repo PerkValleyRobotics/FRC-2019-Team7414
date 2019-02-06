@@ -31,6 +31,8 @@ public class PortMap {
 	//PCM
 	public static int solenoid1 = 0;
 	public static int solenoid2 = 1;
+	public static int solenoid3 = 2;
+	public static int solenoid4 = 3;
 
 	public static int camera = 0;
 	
