@@ -6,10 +6,11 @@ import org.usfirst.frc.team7414.robot.States.PistonState;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TeleopArm extends Command {
+public class TeleopArmLift extends Command {
 
-    public TeleopArm() {
+    public TeleopArmLift() {
         requires(Robot.arm);
+        setInterruptible(true);
     }
     
     @Override
@@ -21,7 +22,7 @@ public class TeleopArm extends Command {
         Robot.arm.actuateLiftPiston();
     }
 
-    protected void interrupt() {
+    protected void interrupted() {
         end();
     }
 

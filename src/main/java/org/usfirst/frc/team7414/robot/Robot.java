@@ -53,7 +53,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		if (oi.getButtonPressed(PortMap.moveLeft)) {
+		/*if (oi.getButtonPressed(PortMap.moveLeft)) {
 			Scheduler.getInstance().add(new TeleopMoveLeft());
 		}
 		if (oi.getButtonPressed(PortMap.moveRight)) {
@@ -61,7 +61,7 @@ public class Robot extends TimedRobot {
 		}
 		if (oi.getButtonPressed(PortMap.pushPistonsToggle)) {
 			Scheduler.getInstance().add(new TeleopArmPush());
-		}
+		}*/
 		//constantly updating value for compressors
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());

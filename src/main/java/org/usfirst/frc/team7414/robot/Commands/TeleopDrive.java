@@ -8,6 +8,7 @@ public class TeleopDrive extends Command {
 
 	public TeleopDrive() {
 		requires(Robot.difDrive);
+		setInterruptible(true);
 	}
 	
 	@Override

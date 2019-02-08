@@ -2,7 +2,7 @@ package org.usfirst.frc.team7414.robot.Subsystems;
 
 import org.usfirst.frc.team7414.robot.PortMap;
 import org.usfirst.frc.team7414.robot.Robot;
-import org.usfirst.frc.team7414.robot.Commands.TeleopArm;
+import org.usfirst.frc.team7414.robot.Commands.TeleopArmLift;
 import org.usfirst.frc.team7414.robot.States.PistonState;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -29,7 +29,7 @@ public class Arm extends Subsystem {
     }
     
     protected void initDefaultCommand() {
-		setDefaultCommand(new TeleopArm());
+		
     }
 
     public void actuatePushPistons() {
@@ -45,13 +45,21 @@ public class Arm extends Subsystem {
     }
     
     public void actuateLiftPiston() {
-        if (Robot.oi.getButtonPressed(PortMap.liftPistonToggle)) {
+        if (liftState.equals(PistonState.IN)) {
+            liftSolenoid.set(Value.kForward);
+            liftState = PistonState.OUT;
+        } else {
+            liftSolenoid.set(Value.kReverse);
+            liftState = PistonState.IN;
+        }
+        
+        /*if (Robot.oi.getButtonPressed(PortMap.liftPistonToggle)) {
             if (liftState.equals(PistonState.IN)) {
                 liftSolenoid.set(Value.kForward);
             } else {
                 liftSolenoid.set(Value.kReverse);
             }
-        }
+        }*/
 
         /*if (Robot.oi.getButton(PortMap.liftPistonActivate)) {
             liftSolenoid.set(Value.kForward);
