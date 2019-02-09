@@ -13,6 +13,7 @@ import org.usfirst.frc.team7414.robot.Monitors.*;
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 import org.usfirst.frc.team7414.robot.Monitors.PCMMonitor;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.Compressor;
@@ -31,6 +32,8 @@ public class Robot extends TimedRobot {
 	public static ProximitySensor proximity;
 	public static String vision;
 	public static PCMMonitor pcmmonitor;
+	public static DigitalInput HighLimitSwitch;
+	public static DigitalInput LowLimitSwitch;
 
 	@Override
 	public void robotInit() {
@@ -39,6 +42,9 @@ public class Robot extends TimedRobot {
 		compressor = new Compressor(PortMap.pcm);
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
+		//LowLimitSwitch = new DigitalInput(1);
+		//HighLimitSwitch = new DigitalInput(2);
+		
 		//server.getVideo();
 		//server.putVideo(vision, 320, 240);
 		//pcmmonitor = new PCMMonitor(PortMap.pcm);
@@ -47,15 +53,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		/*if (oi.getButtonPressed(PortMap.moveLeft)) {
-			Scheduler.getInstance().add(new TeleopMoveLeft());
-		}
-		if (oi.getButtonPressed(PortMap.moveRight)) {
-			Scheduler.getInstance().add(new TeleopMoveRight());	
-		}
-		if (oi.getButtonPressed(PortMap.pushPistonsToggle)) {
-			Scheduler.getInstance().add(new TeleopArmPush());
-		}*/
 		//constantly updating value for compressors
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
@@ -63,5 +60,10 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putString("Range:", Double.toString(proximity.read()));
 		//List<Fault> pcmFaults = pcmmonitor.getFaults();
 		//SmartDashboard.putNumber("Pneumatic faults: ", pcmFaults.size());
+		if (LowLimitSwitch.get()) {
+			//when lower switch is pressed, something happens
+		} else if (HighLimitSwitch.get()) {
+			//when upper limit switch is pressed, something else happens
+		}
 	}
 }
