@@ -1,7 +1,6 @@
 package org.usfirst.frc.team7414.robot.Subsystems;
 
 import org.usfirst.frc.team7414.robot.PortMap;
-import org.usfirst.frc.team7414.robot.Robot;
 import org.usfirst.frc.team7414.robot.Commands.TeleopArmLift;
 import org.usfirst.frc.team7414.robot.States.PistonState;
 

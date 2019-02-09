@@ -24,8 +24,8 @@ public class OIHandler {
 		moveLeftButton = new JoystickButton(joystick1, PortMap.moveLeft);
 		moveRightButton = new JoystickButton(joystick1, PortMap.moveRight);
 
-		//liftArmButton.whenPressed(new TeleopArmLift());
-		//pushArmButton.whenPressed(new TeleopArmPush());
+		liftArmButton.whenPressed(new TeleopArmLift());
+		pushArmButton.whenPressed(new TeleopArmPush());
 		moveLeftButton.whenPressed(new TeleopMoveLeft());
 		moveRightButton.whenPressed(new TeleopMoveRight());
 	}
@@ -54,7 +54,7 @@ public class OIHandler {
 
 	//true is pressed, false is not pressed
 	public boolean getMissile() {
-		return joystick1.getRawButton(PortMap.missile);
+		return joystick1.getRawButton(PortMap.slowMode);
 	}
 
 	//true is pressed, false is not pressed

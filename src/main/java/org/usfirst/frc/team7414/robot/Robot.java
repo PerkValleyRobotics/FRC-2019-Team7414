@@ -10,14 +10,11 @@ package org.usfirst.frc.team7414.robot;
 import org.usfirst.frc.team7414.robot.Subsystems.*;
 import org.usfirst.frc.team7414.robot.Monitors.*;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 import org.usfirst.frc.team7414.robot.Monitors.PCMMonitor;
-import org.usfirst.frc.team7414.robot.Commands.TeleopMoveLeft;
-import org.usfirst.frc.team7414.robot.Commands.TeleopMoveRight;
-import org.usfirst.frc.team7414.robot.Commands.TeleopArmPush;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -29,9 +26,9 @@ public class Robot extends TimedRobot {
 	
 	public static DriveTrain difDrive = new DriveTrain();
 	//public static Claw claw = new Claw();
-	//public static Arm arm = new Arm();
+	public static Arm arm = new Arm();
 	public static OIHandler oi = new OIHandler();
-	
+
 	public static CameraServer server;
 	public static Compressor compressor;
 	public static ProximitySensor proximity;

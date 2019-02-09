@@ -7,11 +7,11 @@ public class PortMap {
 	
 	//Joystick Buttons
 	public static int curvatureDrive = 1;
-	public static int missile = 2;
+	public static int slowMode = 2;
 	public static int straightDrive = 4;
-	public static int liftPistonDeActivate = 5;
+	//public static int liftPistonDeActivate = 5;
 	public static int liftPistonToggle = 6;
-	public static int pushPistonsToggle = 8;
+	public static int pushPistonsToggle = 5;
 	public static int moveRight = 11;
 	public static int moveLeft = 12;
 

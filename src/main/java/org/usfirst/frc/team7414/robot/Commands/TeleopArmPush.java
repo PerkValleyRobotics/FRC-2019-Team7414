@@ -10,7 +10,7 @@ public class TeleopArmPush extends Command {
     boolean finished = false;
 
     public TeleopArmPush(){
-        //requires(Robot.arm);
+        requires(Robot.arm);
         setInterruptible(true);
     }
 
@@ -19,7 +19,7 @@ public class TeleopArmPush extends Command {
     }
 
     public void execute() {
-        //Robot.arm.actuatePushPistons();
+        Robot.arm.actuatePushPistons();
         finished = true;
     }
 
@@ -28,7 +28,7 @@ public class TeleopArmPush extends Command {
     }
 
     protected void end() {
-        //Robot.arm.pushSolenoid1.set(Value.kReverse);
-        //Robot.arm.pushSolenoid2.set(Value.kReverse);
+        Robot.arm.pushSolenoid1.set(Value.kReverse);
+        Robot.arm.pushSolenoid2.set(Value.kReverse);
     }
 }

@@ -4,11 +4,12 @@ import org.usfirst.frc.team7414.robot.PortMap;
 import org.usfirst.frc.team7414.robot.Robot;
 import org.usfirst.frc.team7414.robot.Commands.TeleopDrive;
 
-import edu.wpi.first.wpilibj.*;
+//import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Timer;
 
 public class DriveTrain extends Subsystem {
 
@@ -68,33 +69,21 @@ public class DriveTrain extends Subsystem {
 			drive.tankDrive(-0.5, 0.5);
 		}
 		drive.tankDrive(0, 0);
-		try {
-			Thread.sleep(500);
-		} catch (Exception e) {
-
-		}
+		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
 		while (leftEncoder.getDistance()>-100) {
 			drive.tankDrive(-0.5, -0.5);
 		}
 		drive.tankDrive(0, 0);
-		try {
-			Thread.sleep(500);
-		} catch (Exception e) {
-
-		}
+		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
 		while (leftEncoder.getDistance()<65) { //arbitrary number, needs to be tested
 			drive.tankDrive(0.5, -0.5);
 		}
 		drive.tankDrive(0, 0);
-		try {
-			Thread.sleep(500);
-		} catch (Exception e) {
-
-		}
+		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
 		while (leftEncoder.getDistance()<90) {
@@ -109,37 +98,33 @@ public class DriveTrain extends Subsystem {
 			drive.tankDrive(0.5, -0.5);
 		}
 		drive.tankDrive(0, 0);
-		try {
-			Thread.sleep(500);
-		} catch (Exception e) {
-
-		}
+		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
 		while (leftEncoder.getDistance()>-100) {
 			drive.tankDrive(-0.5, -0.5);
 		}
 		drive.tankDrive(0, 0);
-		try {
-			Thread.sleep(500);
-		} catch (Exception e) {
-
-		}
+		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
 		while (leftEncoder.getDistance()>-75) { //arbitrary number, needs to be tested
 			drive.tankDrive(-0.5, 0.5);
 		}
 		drive.tankDrive(0, 0);
-		try {
-			Thread.sleep(500);
-		} catch (Exception e) {
-
-		}
+		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
 		while (leftEncoder.getDistance()<85) {
 			drive.tankDrive(0.5, 0.5);
+		}
+	}
+
+	public void sleep(int millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (Exception e) {
+
 		}
 	}
 
