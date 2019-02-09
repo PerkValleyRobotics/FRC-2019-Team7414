@@ -27,10 +27,10 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 
 public class Robot extends TimedRobot {
 	
-	public static OIHandler oi = new OIHandler();
 	public static DriveTrain difDrive = new DriveTrain();
 	//public static Claw claw = new Claw();
-	public static Arm arm = new Arm();
+	//public static Arm arm = new Arm();
+	public static OIHandler oi = new OIHandler();
 	
 	public static CameraServer server;
 	public static Compressor compressor;

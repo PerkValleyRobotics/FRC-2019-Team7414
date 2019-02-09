@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TeleopArmLift extends Command {
 
     public TeleopArmLift() {
-        requires(Robot.arm);
+        //requires(Robot.arm);
         setInterruptible(true);
     }
     
@@ -19,7 +19,7 @@ public class TeleopArmLift extends Command {
     }
 
     protected void execute() {
-        Robot.arm.actuateLiftPiston();
+        //Robot.arm.actuateLiftPiston();
     }
 
     protected void interrupted() {
@@ -27,10 +27,10 @@ public class TeleopArmLift extends Command {
     }
 
     protected void end() {
-        if (Robot.arm.liftState.equals(PistonState.IN)) {
-            Robot.arm.liftSolenoid.set(Value.kReverse);
-        } else {
-            Robot.arm.liftSolenoid.set(Value.kForward);
-        }
+        //if (Robot.arm.liftState.equals(PistonState.IN)) {
+        //    Robot.arm.liftSolenoid.set(Value.kReverse);
+       // } else {
+        //    Robot.arm.liftSolenoid.set(Value.kForward);
+        //}
     }
 }

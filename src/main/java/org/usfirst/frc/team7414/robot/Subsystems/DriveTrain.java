@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Timer;
 
 public class DriveTrain extends Subsystem {
 
@@ -21,11 +22,13 @@ public class DriveTrain extends Subsystem {
 	
 	private static DifferentialDrive drive = new DifferentialDrive(leftSide, rightSide);
 	
-	private static Encoder leftEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
-	private static Encoder rightEncoder = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
+	private static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k1X);
+	private static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k1X);
 
+	private static boolean squaring = true;
+	
 	public DriveTrain() {
-		 
+		leftEncoder.setReverseDirection(true); 
 	}
 	
 	@Override
@@ -34,6 +37,7 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void drive(double speed, double rotation) {
+		squaring = true;
 		double kCompensate = 0.132; //old drivetrain value
 		kCompensate = -0.1; //new drivetrain value
 		if (speed < 0) {
@@ -42,13 +46,10 @@ public class DriveTrain extends Subsystem {
 
 		if (Robot.oi.getMissile()) { //for better controllable driving at low speeds
 			speed /= 1.75;
-			rotation /= 1.3;
+			rotation /= 1.7;
+			squaring = false;
 		}
-		if (Robot.oi.getButton(11)) {
-			moveLeft();
-		} else if (Robot.oi.getButton(12)) {
-			moveRight();
-		} else if (Robot.oi.getButton(PortMap.straightDrive)) {
+		if (Robot.oi.getButton(PortMap.straightDrive)) {
 			straightDrive(kCompensate);
 		} else if (Robot.oi.getTrigger()) { //for better control when attempting to go straight
 			triggerDrive(speed, rotation, kCompensate);
@@ -56,35 +57,89 @@ public class DriveTrain extends Subsystem {
 			rotation += kCompensate;
 			//this will slow down the speed of the motors based on the joystick w/o button use
 			rotation /= 1.4;
-			drive.arcadeDrive(speed, rotation);
-		}
-	}
-
-	public void moveLeft() {
-		leftEncoder.reset();
-		rightEncoder.reset();
-		while (leftEncoder.get()>-2) { //arbitrary number, needs to be tested
-			drive.tankDrive(-0.4, 0.3);
-		}
-		drive.tankDrive(0, 0);
-		leftEncoder.reset();
-		rightEncoder.reset();
-		while (rightEncoder.get()>-2) { //arbitrary number, needs to be tested
-			drive.tankDrive(0.3, -0.4);
+			drive.arcadeDrive(speed, rotation, squaring);
 		}
 	}
 
 	public void moveRight() {
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (rightEncoder.get()<2) { //arbitrary number, needs to be tested
-			drive.tankDrive(-0.3, 0.4);
+		while (leftEncoder.getDistance()>-70) { //arbitrary number, needs to be tested
+			drive.tankDrive(-0.5, 0.5);
 		}
 		drive.tankDrive(0, 0);
+		try {
+			Thread.sleep(500);
+		} catch (Exception e) {
+
+		}
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.get()<2) { //arbitrary number, needs to be tested
-			drive.tankDrive(0.4, -0.3);
+		while (leftEncoder.getDistance()>-100) {
+			drive.tankDrive(-0.5, -0.5);
+		}
+		drive.tankDrive(0, 0);
+		try {
+			Thread.sleep(500);
+		} catch (Exception e) {
+
+		}
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()<65) { //arbitrary number, needs to be tested
+			drive.tankDrive(0.5, -0.5);
+		}
+		drive.tankDrive(0, 0);
+		try {
+			Thread.sleep(500);
+		} catch (Exception e) {
+
+		}
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()<90) {
+			drive.tankDrive(0.5, 0.5);
+		}
+	}
+
+	public void moveLeft() {
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()<70) { //arbitrary number, needs to be tested
+			drive.tankDrive(0.5, -0.5);
+		}
+		drive.tankDrive(0, 0);
+		try {
+			Thread.sleep(500);
+		} catch (Exception e) {
+
+		}
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()>-100) {
+			drive.tankDrive(-0.5, -0.5);
+		}
+		drive.tankDrive(0, 0);
+		try {
+			Thread.sleep(500);
+		} catch (Exception e) {
+
+		}
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()>-75) { //arbitrary number, needs to be tested
+			drive.tankDrive(-0.5, 0.5);
+		}
+		drive.tankDrive(0, 0);
+		try {
+			Thread.sleep(500);
+		} catch (Exception e) {
+
+		}
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()<85) {
+			drive.tankDrive(0.5, 0.5);
 		}
 	}
 
