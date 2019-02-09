@@ -42,7 +42,6 @@ public class Robot extends TimedRobot {
 	public static Compressor compressor;
 	public static ProximitySensor proximity;
 	public static String vision;
-<<<<<<< HEAD
 
 	private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
@@ -74,7 +73,6 @@ public class Robot extends TimedRobot {
 		visionThread.start();
 			
 		drive = new RobotDrive(1, 2);
-=======
 	public static PCMMonitor pcmmonitor;
 
 	@Override
@@ -87,37 +85,11 @@ public class Robot extends TimedRobot {
 		//server.getVideo();
 		//server.putVideo(vision, 320, 240);
 		//pcmmonitor = new PCMMonitor(PortMap.pcm);
->>>>>>> bf4ef0c72a056e526e580ee45cbc3fe0bda21089
 	}
 
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-<<<<<<< HEAD
-	    //double proxDistance = proximity.read();
-		//System.out.println(proxDistance);
-		
-		//*Checks the status of the compressors*//
-		/*boolean enabled = compressor.enabled();
-        boolean pressureSwitch = compressor.getPressureSwitchValue();
-		double current = compressor.getCompressorCurrent();
-
-		Boolean.toString(enabled);
-		Boolean.toString(pressureSwitch);
-		Double.toString(current);
-
-		//constantly updating value for compressors
-
-		System.out.println("Enabled? " + enabled);
-		System.out.print("\r");
-		System.out.print("Enabled? " + enabled);
-		System.out.println("Pressure Switch Value: " + pressureSwitch);
-		System.out.print("\r");
-		System.out.print("Pressure Switch Value: " + pressureSwitch);
-		System.out.println("Current: " + current);
-		System.out.print("\r");
-		System.out.print("Current: " + current);*/
-=======
 		/*if (oi.getButtonPressed(PortMap.moveLeft)) {
 			Scheduler.getInstance().add(new TeleopMoveLeft());
 		}
@@ -134,7 +106,6 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putString("Range:", Double.toString(proximity.read()));
 		//List<Fault> pcmFaults = pcmmonitor.getFaults();
 		//SmartDashboard.putNumber("Pneumatic faults: ", pcmFaults.size());
->>>>>>> bf4ef0c72a056e526e580ee45cbc3fe0bda21089
 	}
 	@Override
 	public void autonomousPeriodic() {
