@@ -60,10 +60,10 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putString("Range:", Double.toString(proximity.read()));
 		//List<Fault> pcmFaults = pcmmonitor.getFaults();
 		//SmartDashboard.putNumber("Pneumatic faults: ", pcmFaults.size());
-		if (LowLimitSwitch.get()) {
+		/*if (LowLimitSwitch.get()) {
 			//when lower switch is pressed, something happens
 		} else if (HighLimitSwitch.get()) {
 			//when upper limit switch is pressed, something else happens
-		}
+		}*/
 	}
 }
