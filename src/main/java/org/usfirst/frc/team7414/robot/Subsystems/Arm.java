@@ -45,23 +45,5 @@ public class Arm extends Subsystem {
             liftSolenoid.set(Value.kReverse);
             liftState = PistonState.IN;
         }
-        
-        /*if (Robot.oi.getButtonPressed(PortMap.liftPistonToggle)) {
-            if (liftState.equals(PistonState.IN)) {
-                liftSolenoid.set(Value.kForward);
-            } else {
-                liftSolenoid.set(Value.kReverse);
-            }
-        }*/
-
-        /*if (Robot.oi.getButton(PortMap.liftPistonActivate)) {
-            liftSolenoid.set(Value.kForward);
-            liftState = PistonState.OUT;
-        } else if (Robot.oi.getButton(PortMap.liftPistonDeActivate)) {
-            liftSolenoid.set(Value.kReverse);
-            liftState = PistonState.IN;
-        } else {
-            liftSolenoid.set(Value.kOff);
-        }*/
     }
 }
