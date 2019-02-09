@@ -4,9 +4,12 @@ import org.usfirst.frc.team7414.robot.PortMap;
 import org.usfirst.frc.team7414.robot.Robot;
 import org.usfirst.frc.team7414.robot.Commands.TeleopDrive;
 
-import edu.wpi.first.wpilibj.*;
+//import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.Encoder;
 
 public class DriveTrain extends Subsystem {
 
@@ -20,43 +23,126 @@ public class DriveTrain extends Subsystem {
 	
 	private static DifferentialDrive drive = new DifferentialDrive(leftSide, rightSide);
 	
+	private static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k1X);
+	private static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k1X);
+
+	private static boolean squaring = true;
+	
 	public DriveTrain() {
-		 
+		leftEncoder.setReverseDirection(true); 
 	}
 	
+	@Override
+	protected void initDefaultCommand() {
+		setDefaultCommand(new TeleopDrive());
+	}
+
 	public void drive(double speed, double rotation) {
-		double kCompensate = 0.132; //compensates for drifting
-		kCompensate = 0.0;
+		squaring = true;
+		double kCompensate = 0.132; //old drivetrain value
+		kCompensate = -0.1; //new drivetrain value
 		if (speed < 0) {
 			kCompensate *= -1;
 		}
 
 		if (Robot.oi.getMissile()) { //for better controllable driving at low speeds
 			speed /= 1.75;
-			rotation /= 1.3;
+			rotation /= 1.7;
+			squaring = false;
 		}
-
-		if (Robot.oi.getButton(PortMap.straightDrive)) { //slow, straight driving mostly for debugging
-			speed = .4;
-			rotation = Math.abs(kCompensate);
-			drive.arcadeDrive(speed, rotation);
+		if (Robot.oi.getButton(PortMap.straightDrive)) {
+			straightDrive(kCompensate);
 		} else if (Robot.oi.getTrigger()) { //for better control when attempting to go straight
-			boolean turning = Math.abs(speed)<.35 && Math.abs(rotation)>.1;
-			speed /= 2.0; //curvatureDrive is significantly faster than arcadeDrive, for some reason
-			rotation /= 3.0;
-			rotation += kCompensate;
-			drive.curvatureDrive(speed, rotation, turning);
+			triggerDrive(speed, rotation, kCompensate);
 		} else {
 			rotation += kCompensate;
 			//this will slow down the speed of the motors based on the joystick w/o button use
-			speed /= 1.5;
 			rotation /= 1.4;
-			drive.arcadeDrive(speed, rotation);
+			drive.arcadeDrive(speed, rotation, squaring);
 		}
 	}
 
-	@Override
-	protected void initDefaultCommand() {
-		setDefaultCommand(new TeleopDrive());
+	public void moveRight() {
+		long millis = System.currentTimeMillis();
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()>-70 && System.currentTimeMillis()<millis+10000) {
+			drive.tankDrive(-0.5, 0.5);
+		}
+		drive.tankDrive(0, 0);
+		sleep(500);
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()>-100 && System.currentTimeMillis()<millis+10000) {
+			drive.tankDrive(-0.5, -0.5);
+		}
+		drive.tankDrive(0, 0);
+		sleep(500);
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()<65 && System.currentTimeMillis()<millis+10000) {
+			drive.tankDrive(0.5, -0.5);
+		}
+		drive.tankDrive(0, 0);
+		sleep(500);
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()<90 && System.currentTimeMillis()<millis+10000) {
+			drive.tankDrive(0.5, 0.5);
+		}
+	}
+
+	public void moveLeft() {
+		long millis = System.currentTimeMillis();
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()<70 && System.currentTimeMillis()<millis+10000) {
+			drive.tankDrive(0.5, -0.5);
+		}
+		drive.tankDrive(0, 0);
+		sleep(500);
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()>-100 && System.currentTimeMillis()<millis+10000) {
+			drive.tankDrive(-0.5, -0.5);
+		}
+		drive.tankDrive(0, 0);
+		sleep(500);
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()>-75 && System.currentTimeMillis()<millis+10000) {
+			drive.tankDrive(-0.5, 0.5);
+		}
+		drive.tankDrive(0, 0);
+		sleep(500);
+		leftEncoder.reset();
+		rightEncoder.reset();
+		while (leftEncoder.getDistance()<85 && System.currentTimeMillis()<millis+10000) {
+			drive.tankDrive(0.5, 0.5);
+		}
+	}
+
+	public void sleep(int millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (Exception e) {
+
+		}
+	}
+
+	public void straightDrive(double compensation) {
+		drive.arcadeDrive(0.4, compensation);
+	}
+
+	public void triggerDrive(double speed, double rotation, double compensation) {
+		boolean turning = Math.abs(speed)<.35 && Math.abs(rotation)>.1;
+		speed /= 2.0; //curvatureDrive is significantly faster than arcadeDrive, for some reason
+		rotation /= 3.0;
+		rotation += compensation;
+		drive.curvatureDrive(speed, rotation, turning);
+	}
+
+	public void stop() {
+		drive.arcadeDrive(0, 0);
 	}
 }

@@ -7,10 +7,13 @@ public class PortMap {
 	
 	//Joystick Buttons
 	public static int curvatureDrive = 1;
-	public static int missile = 2;
+	public static int slowMode = 2;
 	public static int straightDrive = 4;
-	public static int pistonDeActivate = 5;
-	public static int pistonActivate = 6;
+	//public static int liftPistonDeActivate = 5;
+	public static int liftPistonToggle = 6;
+	public static int pushPistonsToggle = 5;
+	public static int moveRight = 11;
+	public static int moveLeft = 12;
 
 	//PWM
 	public static int driveBackLeft = 0;
@@ -23,13 +26,17 @@ public class PortMap {
 	public static int proximitySensor = 0;
 
 	//CAN Bus
-	public static int compressor = 1;
+	public static int pdp = 0;
+	public static int pcm = 1;
 	
 	//PCM
-	public static int solenoid1 = 0;
-	public static int solenoid2 = 1;
+	public static int liftSolenoid1 = 0;
+	public static int liftSolenoid2 = 1;
+	public static int pushSolenoid1 = 2;
+	public static int pushSolenoid2 = 3;
+	public static int pushSolenoid3 = 4;
+	public static int pushSolenoid4 = 5;
 
-	//Wherever the camera goes, idk
 	public static int camera = 0;
 	
 }

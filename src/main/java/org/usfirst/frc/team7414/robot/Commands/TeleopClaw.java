@@ -1,6 +1,5 @@
 package org.usfirst.frc.team7414.robot.Commands;
 
-import org.usfirst.frc.team7414.robot.*;
 import org.usfirst.frc.team7414.robot.States.ClawState;
 import org.usfirst.frc.team7414.robot.Subsystems.Claw;
 import edu.wpi.first.wpilibj.command.Command;

@@ -1,8 +1,7 @@
 package org.usfirst.frc.team7414.robot.Subsystems;
 
 import org.usfirst.frc.team7414.robot.PortMap;
-import org.usfirst.frc.team7414.robot.Robot;
-import org.usfirst.frc.team7414.robot.Commands.TeleopArm;
+import org.usfirst.frc.team7414.robot.Commands.TeleopArmLift;
 import org.usfirst.frc.team7414.robot.States.PistonState;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -11,26 +10,67 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 public class Arm extends Subsystem {
     
-    DoubleSolenoid solenoid;
-    PistonState state;
+    public DoubleSolenoid liftSolenoid;
+    public DoubleSolenoid pushSolenoid1;
+    public DoubleSolenoid pushSolenoid2;
+    public PistonState liftState;
+    public PistonState pushState;
 
     public Arm() {
-        solenoid = new DoubleSolenoid(PortMap.compressor, PortMap.solenoid1, PortMap.solenoid2);
-        solenoid.set(Value.kReverse);
-        state = PistonState.IN;
+        liftSolenoid = new DoubleSolenoid(PortMap.pcm, PortMap.liftSolenoid1, PortMap.liftSolenoid2);
+        pushSolenoid1 = new DoubleSolenoid(PortMap.pcm, PortMap.pushSolenoid1, PortMap.pushSolenoid2);
+        pushSolenoid2 = new DoubleSolenoid(PortMap.pcm, PortMap.pushSolenoid3, PortMap.pushSolenoid4);
+        liftSolenoid.set(Value.kReverse);
+        pushSolenoid1.set(Value.kReverse);
+        pushSolenoid2.set(Value.kReverse);
+        liftState = PistonState.IN;
+        pushState = PistonState.IN;
     }
     
     protected void initDefaultCommand() {
-		setDefaultCommand(new TeleopArm());
+		setDefaultCommand(new TeleopArmLift());
     }
-    
-    public void actuate() {
-        if (Robot.oi.getButton(PortMap.pistonActivate) && state.equals(PistonState.IN)) {
-            solenoid.set(Value.kForward);
-            state = PistonState.OUT;
-        } else if (Robot.oi.getButton(PortMap.pistonDeActivate) && state.equals(PistonState.OUT)) {
-            solenoid.set(Value.kReverse);
-            state = PistonState.IN;
+
+    public void actuatePushPistons() {
+        if (pushState.equals(PistonState.IN)) {
+            pushSolenoid1.set(Value.kForward);
+            pushSolenoid2.set(Value.kForward);
+            pushState = PistonState.OUT;
+        } else {
+            pushSolenoid1.set(Value.kReverse);
+            pushSolenoid2.set(Value.kReverse);
+            pushState = PistonState.IN;
         }
     }
+<<<<<<< HEAD
+=======
+    
+    public void actuateLiftPiston() {
+        if (liftState.equals(PistonState.IN)) {
+            liftSolenoid.set(Value.kForward);
+            liftState = PistonState.OUT;
+        } else {
+            liftSolenoid.set(Value.kReverse);
+            liftState = PistonState.IN;
+        }
+        
+        /*if (Robot.oi.getButtonPressed(PortMap.liftPistonToggle)) {
+            if (liftState.equals(PistonState.IN)) {
+                liftSolenoid.set(Value.kForward);
+            } else {
+                liftSolenoid.set(Value.kReverse);
+            }
+        }*/
+
+        /*if (Robot.oi.getButton(PortMap.liftPistonActivate)) {
+            liftSolenoid.set(Value.kForward);
+            liftState = PistonState.OUT;
+        } else if (Robot.oi.getButton(PortMap.liftPistonDeActivate)) {
+            liftSolenoid.set(Value.kReverse);
+            liftState = PistonState.IN;
+        } else {
+            liftSolenoid.set(Value.kOff);
+        }*/
+    }
+>>>>>>> bf4ef0c72a056e526e580ee45cbc3fe0bda21089
 }
