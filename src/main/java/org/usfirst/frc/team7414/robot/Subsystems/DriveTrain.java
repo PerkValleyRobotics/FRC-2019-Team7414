@@ -63,59 +63,61 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void moveRight() {
+		long millis = System.currentTimeMillis();
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.getDistance()>-70) { //arbitrary number, needs to be tested
+		while (leftEncoder.getDistance()>-70 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(-0.5, 0.5);
 		}
 		drive.tankDrive(0, 0);
 		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.getDistance()>-100) {
+		while (leftEncoder.getDistance()>-100 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(-0.5, -0.5);
 		}
 		drive.tankDrive(0, 0);
 		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.getDistance()<65) { //arbitrary number, needs to be tested
+		while (leftEncoder.getDistance()<65 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(0.5, -0.5);
 		}
 		drive.tankDrive(0, 0);
 		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.getDistance()<90) {
+		while (leftEncoder.getDistance()<90 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(0.5, 0.5);
 		}
 	}
 
 	public void moveLeft() {
+		long millis = System.currentTimeMillis();
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.getDistance()<70) { //arbitrary number, needs to be tested
+		while (leftEncoder.getDistance()<70 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(0.5, -0.5);
 		}
 		drive.tankDrive(0, 0);
 		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.getDistance()>-100) {
+		while (leftEncoder.getDistance()>-100 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(-0.5, -0.5);
 		}
 		drive.tankDrive(0, 0);
 		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.getDistance()>-75) { //arbitrary number, needs to be tested
+		while (leftEncoder.getDistance()>-75 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(-0.5, 0.5);
 		}
 		drive.tankDrive(0, 0);
 		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.getDistance()<85) {
+		while (leftEncoder.getDistance()<85 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(0.5, 0.5);
 		}
 	}
