@@ -4,7 +4,6 @@ import org.usfirst.frc.team7414.robot.PortMap;
 import org.usfirst.frc.team7414.robot.Robot;
 import org.usfirst.frc.team7414.robot.Commands.TeleopDrive;
 
-//import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -144,5 +143,23 @@ public class DriveTrain extends Subsystem {
 
 	public void stop() {
 		drive.arcadeDrive(0, 0);
+	}
+
+	public void turnLeft() {
+		long millis = System.currentTimeMillis();
+		leftEncoder.reset();
+		while (leftEncoder.getDistance()>-30 && System.currentTimeMillis()<millis+500) { //arbitrary numbers, needs testing
+			drive.tankDrive(-0.4, 0.4);
+		}
+		stop();
+	}
+
+	public void turnRight() {
+		long millis = System.currentTimeMillis();
+		leftEncoder.reset();
+		while (leftEncoder.getDistance()<30 && System.currentTimeMillis()<millis+500) { //arbitrary numbers, needs testing
+			drive.tankDrive(0.4, -0.4);
+		}
+		stop();
 	}
 }

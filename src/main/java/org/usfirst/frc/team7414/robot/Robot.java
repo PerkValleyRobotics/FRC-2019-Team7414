@@ -10,9 +10,6 @@ package org.usfirst.frc.team7414.robot;
 import org.usfirst.frc.team7414.robot.Subsystems.*;
 import org.usfirst.frc.team7414.robot.Monitors.*;
 
-//import java.util.ArrayList;
-//import java.util.List;
-
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 import org.usfirst.frc.team7414.robot.Monitors.PCMMonitor;
 
@@ -25,7 +22,7 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 public class Robot extends TimedRobot {
 	
 	public static DriveTrain difDrive = new DriveTrain();
-	//public static Claw claw = new Claw();
+	public static Claw claw = new Claw();
 	public static Arm arm = new Arm();
 	public static OIHandler oi = new OIHandler();
 
@@ -40,7 +37,7 @@ public class Robot extends TimedRobot {
 		server = CameraServer.getInstance();
 		server.startAutomaticCapture(PortMap.camera);
 		compressor = new Compressor(PortMap.pcm);
-		compressor.setClosedLoopControl(false);
+		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
 		//server.getVideo();
 		//server.putVideo(vision, 320, 240);

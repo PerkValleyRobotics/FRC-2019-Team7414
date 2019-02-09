@@ -4,6 +4,9 @@ import org.usfirst.frc.team7414.robot.Commands.TeleopArmPush;
 import org.usfirst.frc.team7414.robot.Commands.TeleopArmLift;
 import org.usfirst.frc.team7414.robot.Commands.TeleopMoveLeft;
 import org.usfirst.frc.team7414.robot.Commands.TeleopMoveRight;
+import org.usfirst.frc.team7414.robot.Commands.TeleopTurnLeft;
+import org.usfirst.frc.team7414.robot.Commands.TeleopTurnRight;
+import org.usfirst.frc.team7414.robot.Commands.TeleopClaw;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -16,6 +19,9 @@ public class OIHandler {
 	public static JoystickButton pushArmButton;
 	public static JoystickButton moveLeftButton;
 	public static JoystickButton moveRightButton;
+	public static JoystickButton clawButton;
+	public static JoystickButton turnRightButton;
+	public static JoystickButton turnLeftButton;
 
 	public OIHandler() {
 		joystick1 = new Joystick(PortMap.joystick);
@@ -23,11 +29,17 @@ public class OIHandler {
 		pushArmButton = new JoystickButton(joystick1, PortMap.pushPistonsToggle);
 		moveLeftButton = new JoystickButton(joystick1, PortMap.moveLeft);
 		moveRightButton = new JoystickButton(joystick1, PortMap.moveRight);
+		clawButton = new JoystickButton(joystick1, PortMap.clawToggle);
+		turnRightButton = new JoystickButton(joystick1, PortMap.turnRight);
+		turnLeftButton = new JoystickButton(joystick1, PortMap.turnLeft);
 
 		liftArmButton.whenPressed(new TeleopArmLift());
 		pushArmButton.whenPressed(new TeleopArmPush());
 		moveLeftButton.whenPressed(new TeleopMoveLeft());
 		moveRightButton.whenPressed(new TeleopMoveRight());
+		clawButton.whenPressed(new TeleopClaw());
+		turnRightButton.whenPressed(new TeleopTurnRight());
+		turnLeftButton.whenPressed(new TeleopTurnLeft());
 	}
 	//forwards and backwards
 	public double getY() {

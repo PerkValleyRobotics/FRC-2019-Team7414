@@ -4,20 +4,24 @@ import org.usfirst.frc.team7414.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TeleopMoveRight extends Command {
+public class TeleopTurnLeft extends Command {
 
-    private boolean finished = false;
+    boolean finished = false;
 
-    public TeleopMoveRight() {
+    public TeleopTurnLeft() {
         requires(Robot.difDrive);
     }
-
+    
     protected boolean isFinished() {
-        return finished;
+        return finished; 
     }
 
     protected void execute() {
-        Robot.difDrive.moveLeft();
+        Robot.difDrive.turnLeft();
         finished = true;
+    }
+
+    protected void end() {
+
     }
 }

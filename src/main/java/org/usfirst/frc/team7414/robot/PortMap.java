@@ -8,12 +8,14 @@ public class PortMap {
 	//Joystick Buttons
 	public static int curvatureDrive = 1;
 	public static int slowMode = 2;
+	public static int clawToggle = 3;
 	public static int straightDrive = 4;
-	//public static int liftPistonDeActivate = 5;
-	public static int liftPistonToggle = 6;
 	public static int pushPistonsToggle = 5;
-	public static int moveRight = 11;
-	public static int moveLeft = 12;
+	public static int liftPistonToggle = 6;
+	public static int turnLeft = 9;
+	public static int turnRight = 10;
+	public static int moveLeft = 11;
+	public static int moveRight = 12;
 
 	//PWM
 	public static int driveBackLeft = 0;
@@ -34,8 +36,6 @@ public class PortMap {
 	public static int liftSolenoid2 = 1;
 	public static int pushSolenoid1 = 2;
 	public static int pushSolenoid2 = 3;
-	public static int pushSolenoid3 = 4;
-	public static int pushSolenoid4 = 5;
 
 	public static int camera = 0;
 	
