@@ -34,6 +34,7 @@ public class Robot extends TimedRobot {
 	public static PCMMonitor pcmmonitor;
 	public static DigitalInput HighLimitSwitch;
 	public static DigitalInput LowLimitSwitch;
+	public static ProximitySensor proximityBack;
 
 	@Override
 	public void robotInit() {
@@ -42,6 +43,7 @@ public class Robot extends TimedRobot {
 		compressor = new Compressor(PortMap.pcm);
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
+		proximityBack = new ProximitySensor(PortMap.proximityBack);
 		//LowLimitSwitch = new DigitalInput(1);
 		//HighLimitSwitch = new DigitalInput(2);
 		
@@ -57,7 +59,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
 		SmartDashboard.putString("Current:", Double.toString((double)((int)(compressor.getCompressorCurrent()*100))/100));
-		SmartDashboard.putString("Range:", Double.toString(proximity.read()));
+		SmartDashboard.putString("Ahead:", Double.toString(proximity.read()));
+		SmartDashboard.putString("Behind:", Double.toString(proximityBack.read()));
 		//List<Fault> pcmFaults = pcmmonitor.getFaults();
 		//SmartDashboard.putNumber("Pneumatic faults: ", pcmFaults.size());
 		/*if (LowLimitSwitch.get()) {
