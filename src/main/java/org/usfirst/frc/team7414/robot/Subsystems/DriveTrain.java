@@ -39,14 +39,14 @@ public class DriveTrain extends Subsystem {
 	public void drive(double speed, double rotation) {
 		squaring = true;
 		double kCompensate = 0.132; //old drivetrain value
-		kCompensate = -0.1; //new drivetrain value
+		//kCompensate = -0.1; //new drivetrain value
 		if (speed < 0) {
 			kCompensate *= -1;
 		}
 
 		if (Robot.oi.getMissile()) { //for better controllable driving at low speeds
-			speed /= 1.75;
-			rotation /= 1.7;
+			speed /= 2.3;
+			rotation /= 2.3;
 			squaring = false;
 		}
 		if (Robot.oi.getButton(PortMap.straightDrive)) {
@@ -134,7 +134,7 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void triggerDrive(double speed, double rotation, double compensation) {
-		boolean turning = Math.abs(speed)<.35 && Math.abs(rotation)>.1;
+		boolean turning = Math.abs(speed)<.45 && Math.abs(rotation)>.1;
 		speed /= 2.0; //curvatureDrive is significantly faster than arcadeDrive, for some reason
 		rotation /= 3.0;
 		rotation += compensation;

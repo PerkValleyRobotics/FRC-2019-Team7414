@@ -29,6 +29,6 @@ public class TeleopClaw extends Command {
     }
 
     protected void end() {
-
+        Robot.claw.clawMotor.set(0);
     }
 }
