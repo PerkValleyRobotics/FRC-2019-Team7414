@@ -26,6 +26,7 @@ public class PortMap {
 
 	//Analog
 	public static int proximitySensor = 0;
+	public static int proximityBack = 1;
 
 	//CAN Bus
 	public static int pdp = 0;
