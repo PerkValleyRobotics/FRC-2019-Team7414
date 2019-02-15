@@ -22,8 +22,8 @@ public class DriveTrain extends Subsystem {
 	
 	private static DifferentialDrive drive = new DifferentialDrive(leftSide, rightSide);
 	
-	private static Encoder leftEncoder = new Encoder(6, 7, false, Encoder.EncodingType.k1X);
-	private static Encoder rightEncoder = new Encoder(8, 9, false, Encoder.EncodingType.k1X);
+	private static Encoder leftEncoder = new Encoder(PortMap.leftEncoder1, PortMap.leftEncoder2, false, Encoder.EncodingType.k1X);
+	private static Encoder rightEncoder = new Encoder(PortMap.rightEncoder1, PortMap.rightEncoder2, false, Encoder.EncodingType.k1X);
 
 	private static boolean squaring = true;
 	

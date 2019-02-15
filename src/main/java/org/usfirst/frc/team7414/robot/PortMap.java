@@ -28,6 +28,12 @@ public class PortMap {
 	public static int proximitySensor = 0;
 	public static int proximityBack = 1;
 
+	//DIO
+	public static int leftEncoder1 = 6;
+	public static int leftEncoder2 = 7;
+	public static int rightEncoder1 = 8;
+	public static int rightEncoder2 = 9;
+	
 	//CAN Bus
 	public static int pdp = 0;
 	public static int pcm = 1;
