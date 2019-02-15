@@ -8,18 +8,21 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class TeleopArmLift extends Command {
 
+    private boolean finished = false;
+    
     public TeleopArmLift() {
         requires(Robot.arm);
-        setInterruptible(true);
+        //setInterruptible(true);
     }
     
     @Override
     protected boolean isFinished() {
-        return false;
+        return finished;
     }
 
     protected void execute() {
         Robot.arm.actuateLiftPiston();
+        finished = true;
     }
 
     protected void interrupted() {
@@ -27,10 +30,10 @@ public class TeleopArmLift extends Command {
     }
 
     protected void end() {
-        if (Robot.arm.liftState.equals(PistonState.IN)) {
+        /*if (Robot.arm.liftState.equals(PistonState.IN)) {
             Robot.arm.liftSolenoid.set(Value.kReverse);
         } else {
             Robot.arm.liftSolenoid.set(Value.kForward);
-        }
+        }*/
     }
 }

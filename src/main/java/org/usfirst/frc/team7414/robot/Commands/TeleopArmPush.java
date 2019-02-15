@@ -10,7 +10,7 @@ public class TeleopArmPush extends Command {
 
     public TeleopArmPush(){
         requires(Robot.arm);
-        setInterruptible(true);
+        //setInterruptible(true);
     }
 
     public boolean isFinished() {

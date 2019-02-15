@@ -10,7 +10,7 @@ public class Claw extends Subsystem {
 
     public static ClawState state = ClawState.OUT;
 
-    public static Spark clawMotor = new Spark(PortMap.claw);
+    public Spark clawMotor = new Spark(PortMap.claw);
 
     public void pushOut() {
         long millis = System.currentTimeMillis();

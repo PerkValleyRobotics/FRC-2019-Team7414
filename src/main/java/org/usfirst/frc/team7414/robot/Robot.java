@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.smartdashboard.*;
-
+ 
 public class Robot extends TimedRobot {
 	
 	public static DriveTrain difDrive = new DriveTrain();
@@ -60,7 +60,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
 		SmartDashboard.putString("Current:", Double.toString((double)((int)(compressor.getCompressorCurrent()*100))/100));
 		SmartDashboard.putString("Ahead:", Double.toString(proximity.read()));
-		SmartDashboard.putString("Behind:", Double.toString(proximityBack.read()));
+		//SmartDashboard.putString("Behind:", Double.toString(proximityBack.read()));
+		SmartDashboard.putBoolean("In Range:", proximity.read()<40 && proximity.read()>30); //numbers need testing
 		//List<Fault> pcmFaults = pcmmonitor.getFaults();
 		//SmartDashboard.putNumber("Pneumatic faults: ", pcmFaults.size());
 		/*if (LowLimitSwitch.get()) {

@@ -24,7 +24,7 @@ public class Arm extends Subsystem {
     }
     
     protected void initDefaultCommand() {
-		//setDefaultCommand(new TeleopArmLift());
+		
     }
 
     public void actuatePushPistons() {

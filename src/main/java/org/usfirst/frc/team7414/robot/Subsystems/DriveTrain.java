@@ -22,8 +22,8 @@ public class DriveTrain extends Subsystem {
 	
 	private static DifferentialDrive drive = new DifferentialDrive(leftSide, rightSide);
 	
-	private static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k1X);
-	private static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k1X);
+	private static Encoder leftEncoder = new Encoder(6, 7, false, Encoder.EncodingType.k1X);
+	private static Encoder rightEncoder = new Encoder(8, 9, false, Encoder.EncodingType.k1X);
 
 	private static boolean squaring = true;
 	
@@ -39,7 +39,7 @@ public class DriveTrain extends Subsystem {
 	public void drive(double speed, double rotation) {
 		squaring = true;
 		double kCompensate = 0.132; //old drivetrain value
-		//kCompensate = -0.1; //new drivetrain value
+		kCompensate = -0.1; //new drivetrain value
 		if (speed < 0) {
 			kCompensate *= -1;
 		}

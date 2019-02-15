@@ -22,7 +22,7 @@ public class PortMap {
 	public static int driveBackRight = 1;
 	public static int driveFrontLeft = 2;
 	public static int driveFrontRight = 3;
-	public static int claw = 4;
+	public static int claw = 5;
 
 	//Analog
 	public static int proximitySensor = 0;
@@ -33,10 +33,10 @@ public class PortMap {
 	public static int pcm = 1;
 	
 	//PCM
-	public static int liftSolenoid1 = 0;
-	public static int liftSolenoid2 = 1;
-	public static int pushSolenoid1 = 2;
-	public static int pushSolenoid2 = 3;
+	public static int liftSolenoid1 = 1;
+	public static int liftSolenoid2 = 0;
+	public static int pushSolenoid1 = 4;
+	public static int pushSolenoid2 = 5;
 
 	public static int camera = 0;
 	
