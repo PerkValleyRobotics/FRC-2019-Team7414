@@ -10,10 +10,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Claw extends Subsystem {
 
     public static ClawState state = ClawState.IN;
-    public static long millis = System.currentTimeMillis();
+    public static long millis;
 
-    public Spark clawMotor = new Spark(PortMap.claw);
+    public Spark clawMotor;
 
+    public Claw() {
+        millis = System.currentTimeMillis();
+        clawMotor = new Spark(PortMap.claw);
+    }
+    
     public void pushOut() {
         //long millis = System.currentTimeMillis();
         //state = ClawState.BETWEEN;

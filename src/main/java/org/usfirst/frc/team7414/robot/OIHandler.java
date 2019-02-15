@@ -29,7 +29,7 @@ public class OIHandler {
 		pushArmButton = new JoystickButton(joystick1, PortMap.pushPistonsToggle);
 		moveLeftButton = new JoystickButton(joystick1, PortMap.moveLeft);
 		moveRightButton = new JoystickButton(joystick1, PortMap.moveRight);
-		clawButton = new JoystickButton(joystick1, PortMap.clawToggle);
+		//clawButton = new JoystickButton(joystick1, PortMap.clawToggle);
 		turnRightButton = new JoystickButton(joystick1, PortMap.turnRight);
 		turnLeftButton = new JoystickButton(joystick1, PortMap.turnLeft);
 
@@ -37,7 +37,7 @@ public class OIHandler {
 		pushArmButton.whenPressed(new TeleopArmPush());
 		moveLeftButton.whenPressed(new TeleopMoveLeft());
 		moveRightButton.whenPressed(new TeleopMoveRight());
-		clawButton.whenPressed(new TeleopClaw());
+		//clawButton.whenPressed(new TeleopClaw());
 		turnRightButton.whenPressed(new TeleopTurnRight());
 		turnLeftButton.whenPressed(new TeleopTurnLeft());
 	}
