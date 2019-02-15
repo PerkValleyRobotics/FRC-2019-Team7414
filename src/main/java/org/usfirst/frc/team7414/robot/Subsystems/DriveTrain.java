@@ -146,20 +146,22 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void turnLeft() {
-		long millis = System.currentTimeMillis();
+		drive.tankDrive(-0.2,0.2, false);		
+		/*long millis = System.currentTimeMillis();
 		leftEncoder.reset();
 		while (leftEncoder.getDistance()>-30 && System.currentTimeMillis()<millis+500) { //arbitrary numbers, needs testing
 			drive.tankDrive(-0.4, 0.4);
 		}
-		stop();
+		stop();*/
 	}
 
 	public void turnRight() {
-		long millis = System.currentTimeMillis();
+		drive.tankDrive(0.2, -0.2, false);
+		/*long millis = System.currentTimeMillis();
 		leftEncoder.reset();
 		while (leftEncoder.getDistance()<30 && System.currentTimeMillis()<millis+500) { //arbitrary numbers, needs testing
 			drive.tankDrive(0.4, -0.4);
 		}
-		stop();
+		stop();*/
 	}
 }
