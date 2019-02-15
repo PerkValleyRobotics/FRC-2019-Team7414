@@ -8,7 +8,7 @@
 package org.usfirst.frc.team7414.robot;
 
 import org.usfirst.frc.team7414.robot.Subsystems.*;
-import org.usfirst.frc.team7414.robot.Monitors.*;
+import org.usfirst.frc.team7414.robot.Commands.*;
 
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 import org.usfirst.frc.team7414.robot.Monitors.PCMMonitor;
@@ -49,7 +49,8 @@ public class Robot extends TimedRobot {
 		
 		//server.getVideo();
 		//server.putVideo(vision, 320, 240);
-		//pcmmonitor = new PCMMonitor(PortMap.pcm);
+		SmartDashboard.putData("Calibrate Arm and Claw", new CalibrateArmClaw());
+		SmartDashboard.putData("Calibrate Drive", new CalibrateDrive());
 	}
 
 	@Override
