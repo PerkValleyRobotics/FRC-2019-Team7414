@@ -38,15 +38,14 @@ public class DriveTrain extends Subsystem {
 
 	public void drive(double speed, double rotation) {
 		squaring = true;
-		//double kCompensate = 0.132; //old drivetrain value
-		double kCompensate = -0.1; //new drivetrain value
+		double kCompensate = -0.1;
 		if (speed < 0) {
 			kCompensate *= -1;
 		}
 
 		if (Robot.oi.getMissile()) { //for better controllable driving at low speeds
-			speed /= 2.3;
-			rotation /= 2.3;
+			speed /= 1.8;
+			rotation /= 1.8;
 			squaring = false;
 		}
 		if (Robot.oi.getButton(PortMap.straightDrive)) {
@@ -147,21 +146,9 @@ public class DriveTrain extends Subsystem {
 
 	public void turnLeft() {
 		drive.tankDrive(-0.35, 0.35, false);		
-		/*long millis = System.currentTimeMillis();
-		leftEncoder.reset();
-		while (leftEncoder.getDistance()>-30 && System.currentTimeMillis()<millis+500) { //arbitrary numbers, needs testing
-			drive.tankDrive(-0.4, 0.4);
-		}
-		stop();*/
 	}
 
 	public void turnRight() {
 		drive.tankDrive(0.35, -0.35, false);
-		/*long millis = System.currentTimeMillis();
-		leftEncoder.reset();
-		while (leftEncoder.getDistance()<30 && System.currentTimeMillis()<millis+500) { //arbitrary numbers, needs testing
-			drive.tankDrive(0.4, -0.4);
-		}
-		stop();*/
 	}
 }

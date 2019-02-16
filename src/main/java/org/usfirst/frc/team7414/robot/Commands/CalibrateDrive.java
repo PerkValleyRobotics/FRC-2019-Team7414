@@ -1,11 +1,11 @@
 package org.usfirst.frc.team7414.robot.Commands;
 
-import org.usfirst.frc.team7414.robot.*;
+import org.usfirst.frc.team7414.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 public class CalibrateDrive extends Command {
-    private static double SPEED = 0.1;
+    private static double SPEED = 0.3;
 
     private boolean finished = false;
 

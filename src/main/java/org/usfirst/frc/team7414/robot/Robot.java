@@ -43,12 +43,6 @@ public class Robot extends TimedRobot {
 		compressor = new Compressor(PortMap.pcm);
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
-		//proximityBack = new ProximitySensor(PortMap.proximityBack);
-		//LowLimitSwitch = new DigitalInput(1);
-		//HighLimitSwitch = new DigitalInput(2);
-		
-		//server.getVideo();
-		//server.putVideo(vision, 320, 240);
 		SmartDashboard.putData("Calibrate Arm and Claw", new CalibrateArmClaw());
 		SmartDashboard.putData("Calibrate Drive", new CalibrateDrive());
 	}
@@ -56,19 +50,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		//constantly updating value for compressors
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
 		SmartDashboard.putString("Current:", Double.toString((double)((int)(compressor.getCompressorCurrent()*100))/100));
 		SmartDashboard.putString("Ahead:", Double.toString(proximity.read()));
-		//SmartDashboard.putString("Behind:", Double.toString(proximityBack.read()));
 		SmartDashboard.putBoolean("In Range:", proximity.read()<40 && proximity.read()>30); //numbers need testing
-		//List<Fault> pcmFaults = pcmmonitor.getFaults();
-		//SmartDashboard.putNumber("Pneumatic faults: ", pcmFaults.size());
-		/*if (LowLimitSwitch.get()) {
-			//when lower switch is pressed, something happens
-		} else if (HighLimitSwitch.get()) {
-			//when upper limit switch is pressed, something else happens
-		}*/
+		SmartDashboard.putString("Claw:", claw.getState());
 	}
 }

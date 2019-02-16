@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Claw extends Subsystem {
 
-    public static ClawState state = ClawState.IN;
+    public static ClawState state = ClawState.OFF;
     public static long millis;
 
     public Spark clawMotor;
@@ -20,24 +20,13 @@ public class Claw extends Subsystem {
     }
     
     public void pushOut() {
-        //long millis = System.currentTimeMillis();
-        //state = ClawState.BETWEEN;
+        updateTime();
         clawMotor.set(0.5);
-        /*while (System.currentTimeMillis()<millis+700) { //arbitrary number, needs testing
-            clawMotor.set(0.3);
-        }*/
-        //state = ClawState.OUT;
     }
 
     public void pullIn() {
-        //long millis = System.currentTimeMillis();
-        //state = ClawState.BETWEEN;
-        // while (System.currentTimeMillis()<millis+1000) {// arbitrary number, needs testing
-        //     clawMotor.set(-0.3);
-        // }
-        //clawMotor.set(0);
+        updateTime(); 
         clawMotor.set(-0.5);
-        //state = ClawState.IN;
     }
 
     public void stop() {
@@ -48,6 +37,16 @@ public class Claw extends Subsystem {
         millis = System.currentTimeMillis();
     }
 
+
+    public String getState() {
+        if (state.equals(ClawState.IN)) {
+            return "IN";
+        } else if (state.equals(ClawState.OUT)) {
+            return "OUT";
+        } else {
+            return "OFF";
+        }
+    }
     @Override
     protected void initDefaultCommand() {
         setDefaultCommand(new TeleopClaw());

@@ -6,7 +6,6 @@ import org.usfirst.frc.team7414.robot.Commands.TeleopMoveLeft;
 import org.usfirst.frc.team7414.robot.Commands.TeleopMoveRight;
 import org.usfirst.frc.team7414.robot.Commands.TeleopTurnLeft;
 import org.usfirst.frc.team7414.robot.Commands.TeleopTurnRight;
-import org.usfirst.frc.team7414.robot.Commands.TeleopClaw;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -29,7 +28,6 @@ public class OIHandler {
 		pushArmButton = new JoystickButton(joystick1, PortMap.pushPistonsToggle);
 		moveLeftButton = new JoystickButton(joystick1, PortMap.shiftRight);
 		moveRightButton = new JoystickButton(joystick1, PortMap.shiftLeft);
-		//clawButton = new JoystickButton(joystick1, PortMap.clawToggle);
 		turnRightButton = new JoystickButton(joystick1, PortMap.turnRight);
 		turnLeftButton = new JoystickButton(joystick1, PortMap.turnLeft);
 
@@ -37,10 +35,10 @@ public class OIHandler {
 		pushArmButton.whenPressed(new TeleopArmPush());
 		moveLeftButton.whenPressed(new TeleopMoveLeft());
 		moveRightButton.whenPressed(new TeleopMoveRight());
-		//clawButton.whenPressed(new TeleopClaw());
 		turnRightButton.whenPressed(new TeleopTurnRight());
 		turnLeftButton.whenPressed(new TeleopTurnLeft());
 	}
+
 	//forwards and backwards
 	public double getY() {
 		return -1 * joystick1.getY();
@@ -50,12 +48,6 @@ public class OIHandler {
 	//right and left
 	public double getX() {
 		return joystick1.getX();
-		//right is positive, left is negative
-	}
-	
-	//twist
-	public double getZ() {
-		return joystick1.getZ();
 		//right is positive, left is negative
 	}
 
