@@ -45,7 +45,7 @@ public class PortMap {
 	public static int pushSolenoid2 = 5;
 
 	//cameras
-	public static int camera = 0;
-	public static int cameraHigh = 1;
+	public static int cameraLow = 1;
+	public static int cameraHigh = 0;
 	
 }
