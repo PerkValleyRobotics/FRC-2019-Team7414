@@ -46,5 +46,6 @@ public class PortMap {
 
 	//cameras
 	public static int camera = 0;
+	public static int cameraHigh = 1;
 	
 }

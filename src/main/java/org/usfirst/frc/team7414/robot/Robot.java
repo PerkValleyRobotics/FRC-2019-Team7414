@@ -40,6 +40,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		server = CameraServer.getInstance();
 		server.startAutomaticCapture(PortMap.camera);
+		server.startAutomaticCapture(PortMap.cameraHigh);
 		compressor = new Compressor(PortMap.pcm);
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
