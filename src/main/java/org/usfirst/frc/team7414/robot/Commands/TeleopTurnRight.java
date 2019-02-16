@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class TeleopTurnRight extends Command {
     
-    boolean finished = false;
+    //boolean finished = false;
 
     public TeleopTurnRight() {
         requires(Robot.difDrive);
@@ -18,11 +18,11 @@ public class TeleopTurnRight extends Command {
     }
 
     protected void execute() {
-        Robot.difDrive.turnLeft();
-        finished = true;
+        Robot.difDrive.turnRight();
+        //finished = true;
     }
 
     protected void end() {
-
+        Robot.difDrive.stop();
     }
 }

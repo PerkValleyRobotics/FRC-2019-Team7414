@@ -14,8 +14,8 @@ public class PortMap {
 	public static int liftPistonToggle = 6;
 	public static int turnLeft = 9;
 	public static int turnRight = 10;
-	public static int moveLeft = 11;
-	public static int moveRight = 12;
+	public static int shiftRight = 12;
+	public static int shiftLeft = 11;
 
 	//PWM
 	public static int driveBackLeft = 0;

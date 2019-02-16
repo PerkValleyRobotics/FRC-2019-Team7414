@@ -27,8 +27,8 @@ public class OIHandler {
 		joystick1 = new Joystick(PortMap.joystick);
 		liftArmButton = new JoystickButton(joystick1, PortMap.liftPistonToggle);
 		pushArmButton = new JoystickButton(joystick1, PortMap.pushPistonsToggle);
-		moveLeftButton = new JoystickButton(joystick1, PortMap.moveLeft);
-		moveRightButton = new JoystickButton(joystick1, PortMap.moveRight);
+		moveLeftButton = new JoystickButton(joystick1, PortMap.shiftRight);
+		moveRightButton = new JoystickButton(joystick1, PortMap.shiftLeft);
 		//clawButton = new JoystickButton(joystick1, PortMap.clawToggle);
 		turnRightButton = new JoystickButton(joystick1, PortMap.turnRight);
 		turnLeftButton = new JoystickButton(joystick1, PortMap.turnLeft);

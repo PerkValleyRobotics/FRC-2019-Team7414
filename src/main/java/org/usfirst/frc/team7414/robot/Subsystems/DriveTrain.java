@@ -38,8 +38,8 @@ public class DriveTrain extends Subsystem {
 
 	public void drive(double speed, double rotation) {
 		squaring = true;
-		double kCompensate = 0.132; //old drivetrain value
-		kCompensate = -0.1; //new drivetrain value
+		//double kCompensate = 0.132; //old drivetrain value
+		double kCompensate = -0.1; //new drivetrain value
 		if (speed < 0) {
 			kCompensate *= -1;
 		}
@@ -79,7 +79,7 @@ public class DriveTrain extends Subsystem {
 		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.getDistance()<65 && System.currentTimeMillis()<millis+10000) {
+		while (leftEncoder.getDistance()<60 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(0.5, -0.5);
 		}
 		drive.tankDrive(0, 0);
@@ -109,7 +109,7 @@ public class DriveTrain extends Subsystem {
 		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.getDistance()>-75 && System.currentTimeMillis()<millis+10000) {
+		while (leftEncoder.getDistance()>-80 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(-0.5, 0.5);
 		}
 		drive.tankDrive(0, 0);
@@ -146,7 +146,7 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void turnLeft() {
-		drive.tankDrive(-0.2,0.2, false);		
+		drive.tankDrive(-0.35, 0.35, false);		
 		/*long millis = System.currentTimeMillis();
 		leftEncoder.reset();
 		while (leftEncoder.getDistance()>-30 && System.currentTimeMillis()<millis+500) { //arbitrary numbers, needs testing
@@ -156,7 +156,7 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void turnRight() {
-		drive.tankDrive(0.2, -0.2, false);
+		drive.tankDrive(0.35, -0.35, false);
 		/*long millis = System.currentTimeMillis();
 		leftEncoder.reset();
 		while (leftEncoder.getDistance()<30 && System.currentTimeMillis()<millis+500) { //arbitrary numbers, needs testing

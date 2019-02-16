@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
 		compressor = new Compressor(PortMap.pcm);
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
-		proximityBack = new ProximitySensor(PortMap.proximityBack);
+		//proximityBack = new ProximitySensor(PortMap.proximityBack);
 		//LowLimitSwitch = new DigitalInput(1);
 		//HighLimitSwitch = new DigitalInput(2);
 		
