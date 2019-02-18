@@ -38,7 +38,7 @@ public class DriveTrain extends Subsystem {
 
 	public void drive(double speed, double rotation) {
 		squaring = true;
-		double kCompensate = -0.1;
+		double kCompensate = -0.130;
 		if (speed < 0) {
 			kCompensate *= -1;
 		}
@@ -129,7 +129,8 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void straightDrive(double compensation) {
-		drive.arcadeDrive(0.4, compensation);
+		drive.tankDrive(0.4, 0.47);
+		//drive.arcadeDrive(0.4, compensation);
 	}
 
 	public void triggerDrive(double speed, double rotation, double compensation) {
@@ -145,10 +146,10 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void turnLeft() {
-		drive.tankDrive(-0.35, 0.35, false);		
+		drive.tankDrive(-0.27, 0.27, false);		
 	}
 
 	public void turnRight() {
-		drive.tankDrive(0.35, -0.35, false);
+		drive.tankDrive(0.27, -0.27, false);
 	}
 }

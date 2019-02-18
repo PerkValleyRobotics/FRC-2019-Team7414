@@ -22,12 +22,13 @@ public class TeleopClaw extends Command {
         if (Robot.oi.getButtonPressed(PortMap.clawToggle)) {
             if (Claw.state.equals(ClawState.OUT)) {
                 Claw.state = ClawState.IN;
+                Claw.updateTime();
             } else {
                 Claw.state = ClawState.OUT;
             }
         }
 
-        if (Claw.millis>1500) {
+        if (Claw.millis+1500<System.currentTimeMillis() && Claw.state.equals(ClawState.IN)) {
             Claw.state = ClawState.OFF;
         }
         

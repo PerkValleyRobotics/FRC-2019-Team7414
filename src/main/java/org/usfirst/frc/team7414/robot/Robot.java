@@ -50,12 +50,14 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopPeriodic() {
+		int seconds = 150-(int)System.currentTimeMillis()/1000;
 		Scheduler.getInstance().run();
+		SmartDashboard.putString("Time Remaining:", seconds/60 + ":" + seconds%60);
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
 		SmartDashboard.putString("Current:", Double.toString((double)((int)(compressor.getCompressorCurrent()*100))/100));
-		SmartDashboard.putString("Ahead:", Integer.toString((int)(proximity.read())));
-		SmartDashboard.putBoolean("In Range:", proximity.read()<40 && proximity.read()>30); //numbers need testing
+		SmartDashboard.putString("Ahead:", Double.toString((proximity.read())));
+		//SmartDashboard.putBoolean("In Range:", proximity.read()<40 && proximity.read()>30); //numbers need testing
 		SmartDashboard.putString("Claw:", claw.getState());
 	}
 }
