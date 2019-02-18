@@ -10,10 +10,11 @@ public class UltrasonicSensor {
     
     public UltrasonicSensor() {
         sensor = new Ultrasonic(PortMap.ultrasonicPing, PortMap.ultrasonicEcho);
-        sensor.setEnabled(true);
+        sensor.setAutomaticMode(true);
     }
 
     public double read() {
+        //sensor.ping();
         return sensor.getRangeInches();
     }
 

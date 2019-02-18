@@ -38,7 +38,9 @@ public class Robot extends TimedRobot {
 	public static DigitalInput LowLimitSwitch;
 	public static ProximitySensor proximityBack;
 	
-
+	public static boolean matchStart = false;
+	public static long millis;
+	
 	@Override
 	public void robotInit() {
 		difDrive = new DriveTrain();
@@ -49,7 +51,7 @@ public class Robot extends TimedRobot {
 		server.startAutomaticCapture(PortMap.cameraLow);
 		server.startAutomaticCapture(PortMap.cameraHigh);
 		compressor = new Compressor(PortMap.pcm);
-		compressor.setClosedLoopControl(true);
+		compressor.setClosedLoopControl(false);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
 		oi = new OIHandler();
 
@@ -59,10 +61,14 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopPeriodic() {
-		int seconds = 150-(int)System.currentTimeMillis()/1000;
 		Scheduler.getInstance().run();
+		if (!matchStart) {
+			millis = System.currentTimeMillis();
+			matchStart = true;
+		}
+		int seconds = 150-(int)(System.currentTimeMillis()-millis)/1000;
 		SmartDashboard.putBoolean("Ultrasonic status:", ultrasonic.getStatus());
-		SmartDashboard.putNumber("Ultrasonic range:", ultrasonic.read());
+		SmartDashboard.putNumber("Ultrasonic range:" , ultrasonic.read());
 		SmartDashboard.putString("Time Remaining:", seconds/60 + ":" + seconds%60);
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
