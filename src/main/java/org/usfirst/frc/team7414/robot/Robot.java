@@ -51,7 +51,7 @@ public class Robot extends TimedRobot {
 		server.startAutomaticCapture(PortMap.cameraLow);
 		server.startAutomaticCapture(PortMap.cameraHigh);
 		compressor = new Compressor(PortMap.pcm);
-		compressor.setClosedLoopControl(false);
+		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
 		oi = new OIHandler();
 
@@ -68,7 +68,7 @@ public class Robot extends TimedRobot {
 		}
 		int seconds = 150-(int)(System.currentTimeMillis()-millis)/1000;
 		SmartDashboard.putBoolean("Ultrasonic status:", ultrasonic.getStatus());
-		SmartDashboard.putNumber("Ultrasonic range:" , ultrasonic.read());
+		SmartDashboard.putNumber("Ultrasonic range:" , (int)ultrasonic.read());
 		SmartDashboard.putString("Time Remaining:", seconds/60 + ":" + seconds%60);
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
