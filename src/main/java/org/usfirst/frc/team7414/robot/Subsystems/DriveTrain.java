@@ -50,6 +50,8 @@ public class DriveTrain extends Subsystem {
 		}
 		if (Robot.oi.getButton(PortMap.straightDrive)) {
 			straightDrive(kCompensate);
+		} else if (Robot.oi.getButton(PortMap.straightBack)) {
+			straightBackup(kCompensate);
 		} else if (Robot.oi.getTrigger()) { //for better control when attempting to go straight
 			triggerDrive(speed, rotation, kCompensate);
 		} else {
@@ -130,7 +132,10 @@ public class DriveTrain extends Subsystem {
 
 	public void straightDrive(double compensation) {
 		drive.tankDrive(0.4, 0.47);
-		//drive.arcadeDrive(0.4, compensation);
+	}
+
+	public void straightBackup(double compensation) {
+		drive.tankDrive(-0.4,-0.47);
 	}
 
 	public void triggerDrive(double speed, double rotation, double compensation) {

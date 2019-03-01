@@ -28,7 +28,7 @@ public class TeleopClaw extends Command {
             }
         }
 
-        if (Claw.millis+1800<System.currentTimeMillis() && Claw.state.equals(ClawState.IN)) {
+        if (Claw.millis+1700<System.currentTimeMillis() && Claw.state.equals(ClawState.IN)) {
             Claw.state = ClawState.OFF;
         }
         
