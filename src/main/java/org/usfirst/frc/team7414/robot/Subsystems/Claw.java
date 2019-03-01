@@ -15,13 +15,13 @@ public class Claw extends Subsystem {
     public Spark clawMotor;
 
     public Claw() {
-        state = ClawState.OFF;
+        state = ClawState.OUT;
         millis = System.currentTimeMillis();
         clawMotor = new Spark(PortMap.claw);
     }
     
     public void pushOut() {
-        clawMotor.set(-0.18);
+        clawMotor.set(-0.21);
     }
 
     public void pullIn() {

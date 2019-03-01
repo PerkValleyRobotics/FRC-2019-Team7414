@@ -21,7 +21,7 @@ public class ReplaceClaw extends Command {
     public void execute() {
         Robot.claw.pushOut();
         try {
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 		} catch (Exception e) {
 
         }
@@ -32,7 +32,7 @@ public class ReplaceClaw extends Command {
         }
         Robot.claw.pullIn();
         try {
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 		} catch (Exception e) {
 
         }

@@ -10,6 +10,7 @@ package org.usfirst.frc.team7414.robot;
 import org.usfirst.frc.team7414.robot.Subsystems.*;
 import org.usfirst.frc.team7414.robot.Commands.CalibrateArmClaw;
 import org.usfirst.frc.team7414.robot.Commands.CalibrateDrive;
+import org.usfirst.frc.team7414.robot.Commands.ReplaceClaw;
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 import org.usfirst.frc.team7414.robot.Monitors.PCMMonitor;
 import org.usfirst.frc.team7414.robot.Hardware.UltrasonicSensor;
@@ -57,6 +58,7 @@ public class Robot extends TimedRobot {
 
 		SmartDashboard.putData("Calibrate Arm and Claw", new CalibrateArmClaw());
 		SmartDashboard.putData("Calibrate Drive", new CalibrateDrive());
+		SmartDashboard.putData("Replace Claw", new ReplaceClaw());
 	}
 
 	@Override
