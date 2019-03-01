@@ -4,7 +4,6 @@ import org.usfirst.frc.team7414.robot.PortMap;
 import org.usfirst.frc.team7414.robot.Robot;
 import org.usfirst.frc.team7414.robot.Commands.TeleopDrive;
 
-//import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -23,8 +22,8 @@ public class DriveTrain extends Subsystem {
 	
 	private static DifferentialDrive drive = new DifferentialDrive(leftSide, rightSide);
 	
-	private static Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k1X);
-	private static Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k1X);
+	private static Encoder leftEncoder = new Encoder(PortMap.leftEncoder1, PortMap.leftEncoder2, false, Encoder.EncodingType.k1X);
+	private static Encoder rightEncoder = new Encoder(PortMap.rightEncoder1, PortMap.rightEncoder2, false, Encoder.EncodingType.k1X);
 
 	private static boolean squaring = true;
 	
@@ -39,19 +38,20 @@ public class DriveTrain extends Subsystem {
 
 	public void drive(double speed, double rotation) {
 		squaring = true;
-		double kCompensate = 0.132; //old drivetrain value
-		kCompensate = -0.1; //new drivetrain value
+		double kCompensate = -0.130;
 		if (speed < 0) {
 			kCompensate *= -1;
 		}
 
 		if (Robot.oi.getMissile()) { //for better controllable driving at low speeds
-			speed /= 1.75;
-			rotation /= 1.7;
+			speed /= 1.8;
+			rotation /= 1.8;
 			squaring = false;
 		}
 		if (Robot.oi.getButton(PortMap.straightDrive)) {
 			straightDrive(kCompensate);
+		} else if (Robot.oi.getButton(PortMap.straightBack)) {
+			straightBackup(kCompensate);
 		} else if (Robot.oi.getTrigger()) { //for better control when attempting to go straight
 			triggerDrive(speed, rotation, kCompensate);
 		} else {
@@ -80,7 +80,7 @@ public class DriveTrain extends Subsystem {
 		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.getDistance()<65 && System.currentTimeMillis()<millis+10000) {
+		while (leftEncoder.getDistance()<60 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(0.5, -0.5);
 		}
 		drive.tankDrive(0, 0);
@@ -110,7 +110,7 @@ public class DriveTrain extends Subsystem {
 		sleep(500);
 		leftEncoder.reset();
 		rightEncoder.reset();
-		while (leftEncoder.getDistance()>-75 && System.currentTimeMillis()<millis+10000) {
+		while (leftEncoder.getDistance()>-80 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(-0.5, 0.5);
 		}
 		drive.tankDrive(0, 0);
@@ -131,11 +131,15 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void straightDrive(double compensation) {
-		drive.arcadeDrive(0.4, compensation);
+		drive.tankDrive(0.4, 0.47);
+	}
+
+	public void straightBackup(double compensation) {
+		drive.tankDrive(-0.4,-0.47);
 	}
 
 	public void triggerDrive(double speed, double rotation, double compensation) {
-		boolean turning = Math.abs(speed)<.35 && Math.abs(rotation)>.1;
+		boolean turning = Math.abs(speed)<.45 && Math.abs(rotation)>.1;
 		speed /= 2.0; //curvatureDrive is significantly faster than arcadeDrive, for some reason
 		rotation /= 3.0;
 		rotation += compensation;
@@ -144,5 +148,13 @@ public class DriveTrain extends Subsystem {
 
 	public void stop() {
 		drive.arcadeDrive(0, 0);
+	}
+
+	public void turnLeft() {
+		drive.tankDrive(-0.27, 0.27, false);		
+	}
+
+	public void turnRight() {
+		drive.tankDrive(0.27, -0.27, false);
 	}
 }

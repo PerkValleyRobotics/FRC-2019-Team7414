@@ -1,36 +1,49 @@
 package org.usfirst.frc.team7414.robot.Subsystems;
 
 import org.usfirst.frc.team7414.robot.PortMap;
-import org.usfirst.frc.team7414.robot.Commands.*;
 import org.usfirst.frc.team7414.robot.States.ClawState;
+import org.usfirst.frc.team7414.robot.Commands.TeleopClaw;
 
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Claw extends Subsystem {
 
-    public static ClawState state = ClawState.OUT;
+    public static ClawState state;
+    public static long millis;
 
-    private static Encoder clawEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-    private static PWMVictorSPX clawMotor = new PWMVictorSPX(PortMap.claw); //
+    public Spark clawMotor;
 
-    public void pushOut() {
-        state = ClawState.BETWEEN;
-        while (clawEncoder.getDistance()<1230847) { //some number of encoder ticks that will be measured later
-            clawMotor.set(.02); //very low speed
-        }
-        clawMotor.set(0);
+    public Claw() {
         state = ClawState.OUT;
+        millis = System.currentTimeMillis();
+        clawMotor = new Spark(PortMap.claw);
+    }
+    
+    public void pushOut() {
+        clawMotor.set(-0.21);
     }
 
     public void pullIn() {
-        state = ClawState.BETWEEN;
-        while (clawEncoder.getDistance()>0) {
-            clawMotor.set(-.02);
-        }
-        state = ClawState.IN;
+        clawMotor.set(0.20);
+    }
+
+    public void stop() {
         clawMotor.set(0);
+    }
+
+    public static void updateTime() {
+        millis = System.currentTimeMillis();
+    }
+
+    public String getState() {
+        if (state.equals(ClawState.IN)) {
+            return "IN";
+        } else if (state.equals(ClawState.OUT)) {
+            return "OUT";
+        } else {
+            return "OFF";
+        }
     }
 
     @Override
