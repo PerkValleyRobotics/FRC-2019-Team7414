@@ -41,6 +41,10 @@ public class TeleopClaw extends Command {
         }
     }
 
+    protected void interrupt() {
+        Robot.claw.pullIn();
+    }
+
     protected void end() {
         
     }
