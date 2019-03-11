@@ -79,4 +79,23 @@ public class Robot extends TimedRobot {
 		//SmartDashboard.putBoolean("In Range:", proximity.read()<40 && proximity.read()>30); //numbers need testing
 		SmartDashboard.putString("Claw:", claw.getState());
 	}
+
+	@Override
+	public void autonomousPeriodic() {
+		Scheduler.getInstance().run();
+		if (!matchStart) {
+			millis = System.currentTimeMillis();
+			matchStart = true;
+		}
+		int seconds = 150-(int)(System.currentTimeMillis()-millis)/1000;
+		SmartDashboard.putBoolean("Ultrasonic status:", ultrasonic.getStatus());
+		SmartDashboard.putNumber("Ultrasonic range:" , (int)ultrasonic.read());
+		SmartDashboard.putString("Time Remaining:", seconds/60 + ":" + seconds%60);
+		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
+		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
+		SmartDashboard.putString("Current:", Double.toString((double)((int)(compressor.getCompressorCurrent()*100))/100));
+		SmartDashboard.putString("Ahead:", Double.toString((proximity.read())));
+		//SmartDashboard.putBoolean("In Range:", proximity.read()<40 && proximity.read()>30); //numbers need testing
+		SmartDashboard.putString("Claw:", claw.getState());
+	}
 }

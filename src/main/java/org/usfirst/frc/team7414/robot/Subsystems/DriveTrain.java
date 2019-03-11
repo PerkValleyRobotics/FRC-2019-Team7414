@@ -131,11 +131,11 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void straightDrive(double compensation) {
-		drive.tankDrive(0.4, 0.47);
+		drive.tankDrive(0.4, 0.45);
 	}
 
 	public void straightBackup(double compensation) {
-		drive.tankDrive(-0.4,-0.47);
+		drive.tankDrive(-0.4,-0.45);
 	}
 
 	public void triggerDrive(double speed, double rotation, double compensation) {
