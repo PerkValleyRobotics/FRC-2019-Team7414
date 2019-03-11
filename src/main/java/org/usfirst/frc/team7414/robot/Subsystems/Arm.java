@@ -22,10 +22,6 @@ public class Arm extends Subsystem {
         liftState = PistonState.IN;
         pushState = PistonState.IN;
     }
-    
-    protected void initDefaultCommand() {
-		//setDefaultCommand(new TeleopArmLift());
-    }
 
     public void actuatePushPistons() {
         if (pushState.equals(PistonState.IN)) {
@@ -45,5 +41,9 @@ public class Arm extends Subsystem {
             liftSolenoid.set(Value.kReverse);
             liftState = PistonState.IN;
         }
+    }
+
+    protected void initDefaultCommand() {
+		
     }
 }

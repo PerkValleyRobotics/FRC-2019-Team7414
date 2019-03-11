@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.AnalogInput;
 public class ProximitySensor {
     AnalogInput input;
 
-    // channel: the analog channel the sensor is connected to
     public ProximitySensor(int channel) {
         input = new AnalogInput(channel);
     }

@@ -6,9 +6,9 @@ import org.usfirst.frc.team7414.robot.States.ClawState;
 import org.usfirst.frc.team7414.robot.Subsystems.Claw;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TeleopClaw extends Command {
+public class ReplaceClaw extends Command {
 
-    public TeleopClaw() {
+    public ReplaceClaw() {
         requires(Robot.claw);
     }
     
@@ -21,15 +21,13 @@ public class TeleopClaw extends Command {
     protected void execute() {
         if (Robot.oi.getButtonPressed(PortMap.clawToggle)) {
             if (Claw.state.equals(ClawState.OUT)) {
-                Claw.state = ClawState.IN;
+                Claw.state = ClawState.OFF;
                 Claw.updateTime();
+            } else if (Claw.state.equals(ClawState.OFF)) {
+                Claw.state = ClawState.IN;
             } else {
                 Claw.state = ClawState.OUT;
             }
-        }
-
-        if (Claw.millis+1700<System.currentTimeMillis() && Claw.state.equals(ClawState.IN)) {
-            Claw.state = ClawState.OFF;
         }
         
         if (Claw.state.equals(ClawState.IN)) {
@@ -39,10 +37,6 @@ public class TeleopClaw extends Command {
         } else if (Claw.state.equals(ClawState.OFF)) {
             Robot.claw.stop();
         }
-    }
-
-    protected void interrupt() {
-        Robot.claw.pullIn();
     }
 
     protected void end() {
