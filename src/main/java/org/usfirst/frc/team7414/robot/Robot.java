@@ -16,6 +16,7 @@ import org.usfirst.frc.team7414.robot.Monitors.PCMMonitor;
 import org.usfirst.frc.team7414.robot.Hardware.UltrasonicSensor;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.Compressor;
@@ -27,7 +28,7 @@ public class Robot extends TimedRobot {
 	public static DriveTrain difDrive;
 	public static Claw claw;
 	public static Arm arm;
-	public static UltrasonicSensor ultrasonic;
+	// public static UltrasonicSensor ultrasonic;
 	public static OIHandler oi;
 
 	public static CameraServer server;
@@ -37,17 +38,21 @@ public class Robot extends TimedRobot {
 	public static PCMMonitor pcmmonitor;
 	public static DigitalInput HighLimitSwitch;
 	public static DigitalInput LowLimitSwitch;
+	public static DigitalOutput lighting1;
+	public static DigitalOutput lighting2;
 	public static ProximitySensor proximityBack;
 	
 	public static boolean matchStart = false;
 	public static long millis;
+
+	public static boolean lights = true;
 	
 	@Override
 	public void robotInit() {
 		difDrive = new DriveTrain();
 		claw = new Claw();
 		arm = new Arm();
-		ultrasonic = new UltrasonicSensor();
+		// ultrasonic = new UltrasonicSensor();
 		server = CameraServer.getInstance();
 		server.startAutomaticCapture(PortMap.cameraLow);
 		server.startAutomaticCapture(PortMap.cameraHigh);
@@ -55,6 +60,10 @@ public class Robot extends TimedRobot {
 		compressor.setClosedLoopControl(true);
 		proximity = new ProximitySensor(PortMap.proximitySensor);
 		oi = new OIHandler();
+		lighting1 = new DigitalOutput(PortMap.lighting1);
+		lighting2 = new DigitalOutput(PortMap.lighting2);
+		lighting1.set(true);
+		lighting2.set(true);
 
 		SmartDashboard.putData("Calibrate Arm and Claw", new CalibrateArmClaw());
 		SmartDashboard.putData("Calibrate Drive", new CalibrateDrive());
@@ -64,13 +73,15 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		lighting1.set(false);
+		lighting2.set(false);
 		if (!matchStart) {
 			millis = System.currentTimeMillis();
 			matchStart = true;
 		}
 		int seconds = 150-(int)(System.currentTimeMillis()-millis)/1000;
-		SmartDashboard.putBoolean("Ultrasonic status:", ultrasonic.getStatus());
-		SmartDashboard.putNumber("Ultrasonic range:" , (int)ultrasonic.read());
+		//SmartDashboard.putBoolean("Ultrasonic status:", ultrasonic.getStatus());
+		//SmartDashboard.putNumber("Ultrasonic range:" , (int)ultrasonic.read());
 		SmartDashboard.putString("Time Remaining:", seconds/60 + ":" + seconds%60);
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
@@ -88,8 +99,8 @@ public class Robot extends TimedRobot {
 			matchStart = true;
 		}
 		int seconds = 150-(int)(System.currentTimeMillis()-millis)/1000;
-		SmartDashboard.putBoolean("Ultrasonic status:", ultrasonic.getStatus());
-		SmartDashboard.putNumber("Ultrasonic range:" , (int)ultrasonic.read());
+		//SmartDashboard.putBoolean("Ultrasonic status:", ultrasonic.getStatus());
+		//SmartDashboard.putNumber("Ultrasonic range:" , (int)ultrasonic.read());
 		SmartDashboard.putString("Time Remaining:", seconds/60 + ":" + seconds%60);
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
@@ -97,5 +108,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putString("Ahead:", Double.toString((proximity.read())));
 		//SmartDashboard.putBoolean("In Range:", proximity.read()<40 && proximity.read()>30); //numbers need testing
 		SmartDashboard.putString("Claw:", claw.getState());
+		lighting1.set(false);
+		lighting2.set(false);
 	}
 }

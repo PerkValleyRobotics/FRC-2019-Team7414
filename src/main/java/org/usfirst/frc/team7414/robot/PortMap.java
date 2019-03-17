@@ -30,7 +30,9 @@ public class PortMap {
 	public static int proximityBack = 1;
 
 	//DIO
-	public static int ultrasonicPing = 4;
+	public static int lighting1 = 3;
+	public static int lighting2 = 4;
+	public static int ultrasonicPing = 1;
 	public static int ultrasonicEcho = 5;
 	public static int leftEncoder1 = 6;
 	public static int leftEncoder2 = 7;

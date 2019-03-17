@@ -21,7 +21,7 @@ public class Claw extends Subsystem {
     }
     
     public void pushOut() {
-        clawMotor.set(-0.21);
+        clawMotor.set(-0.23);
     }
 
     public void pullIn() {
