@@ -17,7 +17,7 @@ public class Arm extends Subsystem {
     public Arm() {
         liftSolenoid = new DoubleSolenoid(PortMap.pcm, PortMap.liftSolenoid1, PortMap.liftSolenoid2);
         pushSolenoid = new DoubleSolenoid(PortMap.pcm, PortMap.pushSolenoid1, PortMap.pushSolenoid2);
-        liftSolenoid.set(Value.kReverse);
+        liftSolenoid.set(Value.kForward);
         pushSolenoid.set(Value.kForward);
         liftState = PistonState.IN;
         pushState = PistonState.IN;

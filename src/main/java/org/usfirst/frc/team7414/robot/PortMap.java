@@ -16,7 +16,7 @@ public class PortMap {
 	public static int turnLeft = 9;
 	public static int turnRight = 10;
 	public static int shiftRight = 12;
-	public static int shiftLeft = 11;
+	 public static int shiftLeft = 11;
 
 	//PWM
 	public static int driveBackLeft = 0;
