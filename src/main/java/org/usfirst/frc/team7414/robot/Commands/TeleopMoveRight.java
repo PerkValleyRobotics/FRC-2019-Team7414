@@ -17,7 +17,7 @@ public class TeleopMoveRight extends Command {
     }
 
     protected void execute() {
-        Robot.difDrive.moveLeft();
+        //Robot.difDrive.moveLeft();
         finished = true;
     }
 }

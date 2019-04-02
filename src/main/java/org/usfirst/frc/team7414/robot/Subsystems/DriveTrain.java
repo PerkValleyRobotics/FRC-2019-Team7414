@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.Encoder;
+//import edu.wpi.first.wpilibj.Encoder;
 
 public class DriveTrain extends Subsystem {
 
@@ -22,13 +22,13 @@ public class DriveTrain extends Subsystem {
 	
 	private static DifferentialDrive drive = new DifferentialDrive(leftSide, rightSide);
 	
-	private static Encoder leftEncoder = new Encoder(PortMap.leftEncoder1, PortMap.leftEncoder2, false, Encoder.EncodingType.k1X);
-	private static Encoder rightEncoder = new Encoder(PortMap.rightEncoder1, PortMap.rightEncoder2, false, Encoder.EncodingType.k1X);
+	//private static Encoder leftEncoder = new Encoder(PortMap.leftEncoder1, PortMap.leftEncoder2, false, Encoder.EncodingType.k1X);
+	//private static Encoder rightEncoder = new Encoder(PortMap.rightEncoder1, PortMap.rightEncoder2, false, Encoder.EncodingType.k1X);
 
 	private static boolean squaring = true;
 	
 	public DriveTrain() {
-		leftEncoder.setReverseDirection(true); 
+	//	leftEncoder.setReverseDirection(true); 
 	}
 	
 	@Override
@@ -62,7 +62,7 @@ public class DriveTrain extends Subsystem {
 		}
 	}
 
-	public void moveRight() {
+	/*public void moveRight() {
 		long millis = System.currentTimeMillis();
 		leftEncoder.reset();
 		rightEncoder.reset();
@@ -120,7 +120,7 @@ public class DriveTrain extends Subsystem {
 		while (leftEncoder.getDistance()<85 && System.currentTimeMillis()<millis+10000) {
 			drive.tankDrive(0.5, 0.5);
 		}
-	}
+	}*/
 
 	public void sleep(int millis) {
 		try {

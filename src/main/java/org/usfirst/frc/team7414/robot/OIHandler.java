@@ -9,10 +9,12 @@ import org.usfirst.frc.team7414.robot.Commands.TeleopTurnRight;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.XboxController;
 
 public class OIHandler {
 	
 	public static Joystick joystick1;
+	public static XboxController controller;
 
 	public static JoystickButton liftArmButton;
 	public static JoystickButton pushArmButton;
@@ -24,6 +26,7 @@ public class OIHandler {
 
 	public OIHandler() {
 		joystick1 = new Joystick(PortMap.joystick);
+		controller = new XboxController(PortMap.controller);
 		liftArmButton = new JoystickButton(joystick1, PortMap.liftPistonToggle);
 		pushArmButton = new JoystickButton(joystick1, PortMap.pushPistonsToggle);
 		moveLeftButton = new JoystickButton(joystick1, PortMap.shiftRight);
@@ -69,4 +72,5 @@ public class OIHandler {
 	public boolean getButtonPressed(int button) {
 		return joystick1.getRawButtonPressed(button);
 	}
+
 }

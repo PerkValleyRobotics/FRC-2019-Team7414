@@ -4,6 +4,7 @@ public class PortMap {
 
 	//USB
 	public static int joystick = 0;
+	public static int controller = 1;
 	
 	//Joystick Buttons
 	public static int curvatureDrive = 1;
@@ -16,7 +17,10 @@ public class PortMap {
 	public static int turnLeft = 9;
 	public static int turnRight = 10;
 	public static int shiftRight = 12;
-	 public static int shiftLeft = 11;
+	public static int shiftLeft = 11;
+
+	//Xbox Buttons
+
 
 	//PWM
 	public static int driveBackLeft = 0;
@@ -24,6 +28,10 @@ public class PortMap {
 	public static int driveFrontLeft = 2;
 	public static int driveFrontRight = 3;
 	public static int claw = 5;
+	public static int lift1 = 6;
+	public static int lift2 = 7;
+	public static int liftDrive1 = 8;
+	public static int liftDrive2 = 9;
 
 	//Analog
 	public static int proximitySensor = 0;
@@ -32,12 +40,12 @@ public class PortMap {
 	//DIO
 	public static int lighting1 = 3;
 	public static int lighting2 = 4;
-	public static int ultrasonicPing = 1;
-	public static int ultrasonicEcho = 5;
-	public static int leftEncoder1 = 6;
-	public static int leftEncoder2 = 7;
-	public static int rightEncoder1 = 8;
-	public static int rightEncoder2 = 9;
+	public static int liftEncoder1 = 1;
+	public static int liftEncoder2 = 2;
+	//public static int leftEncoder1 = 6;
+	//public static int leftEncoder2 = 7;
+	//public static int rightEncoder1 = 8;
+	//public static int rightEncoder2 = 9;
 	
 	//CAN Bus
 	public static int pdp = 0;

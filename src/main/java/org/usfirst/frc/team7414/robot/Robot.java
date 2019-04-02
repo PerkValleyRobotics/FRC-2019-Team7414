@@ -13,7 +13,6 @@ import org.usfirst.frc.team7414.robot.Commands.CalibrateDrive;
 import org.usfirst.frc.team7414.robot.Commands.ReplaceClaw;
 import org.usfirst.frc.team7414.robot.Hardware.ProximitySensor;
 import org.usfirst.frc.team7414.robot.Monitors.PCMMonitor;
-import org.usfirst.frc.team7414.robot.Hardware.UltrasonicSensor;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalOutput;
@@ -28,6 +27,8 @@ public class Robot extends TimedRobot {
 	public static DriveTrain difDrive;
 	public static Claw claw;
 	public static Arm arm;
+	public static Climber climb;
+	public static ClimberDrive climbDrive;
 	// public static UltrasonicSensor ultrasonic;
 	public static OIHandler oi;
 
@@ -52,6 +53,8 @@ public class Robot extends TimedRobot {
 		difDrive = new DriveTrain();
 		claw = new Claw();
 		arm = new Arm();
+		climb = new Climber();
+		climbDrive = new ClimberDrive();
 		// ultrasonic = new UltrasonicSensor();
 		server = CameraServer.getInstance();
 		server.startAutomaticCapture(PortMap.cameraLow);
