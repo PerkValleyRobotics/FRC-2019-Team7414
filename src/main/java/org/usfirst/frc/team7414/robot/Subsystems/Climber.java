@@ -20,17 +20,17 @@ public class Climber extends Subsystem {
     }
 
     public void liftUp() {
-        liftMotor1.set(0.4);
-        liftMotor2.set(0.4);
+        liftMotor1.set(-0.25);
+        liftMotor2.set(-0.175);
     }
 
     public void returnDown() {
-        if (liftEncoder.get()>0) {
-            liftMotor1.set(-0.4);
-            liftMotor2.set(-0.4);
-        } else {
-            stopLift();
-        }
+        // if (liftEncoder.get()>0) {
+            liftMotor1.set(0.125);
+            liftMotor2.set(0.125);
+        // } else {
+        //     stopLift();
+        // }
     }
 
     public void stopLift() {
