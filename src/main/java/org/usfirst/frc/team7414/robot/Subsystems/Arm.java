@@ -27,10 +27,21 @@ public class Arm extends Subsystem {
         if (pushState.equals(PistonState.IN)) {
             pushSolenoid.set(Value.kReverse);
             pushState = PistonState.OUT;
+            System.out.println("pushState is: " + pushState);
         } else {
             pushSolenoid.set(Value.kForward);
             pushState = PistonState.IN;
+            System.out.println("pushState is: " + pushState);
         }
+
+        // DoubleSolenoid.Value pushSolenoidStatus = pushSolenoid.get();
+        // if (pushSolenoidStatus == Value.kForward) {
+        //     pushSolenoid.set(Value.kForward);
+        //     System.out.println("pushSolenoidStatus is: " + pushSolenoidStatus);
+        // } else {
+        //     pushSolenoid.set(Value.kReverse);
+        //     System.out.println("pushSolenoidStatus is: " + pushSolenoidStatus);
+        // }
     }
     
     public void actuateLiftPiston() {

@@ -17,8 +17,8 @@ public class ClimberDrive extends Subsystem {
     }
 
     public void drive() {
-        driveMotor1.set(0.1);
-        driveMotor2.set(0.1);
+        driveMotor1.set(0.175);
+        driveMotor2.set(0.175);
     }
 
     public void stopDrive() {

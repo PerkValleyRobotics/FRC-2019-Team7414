@@ -54,8 +54,8 @@ public class PortMap {
 	//PCM
 	public static int liftSolenoid1 = 1;
 	public static int liftSolenoid2 = 0;
-	public static int pushSolenoid1 = 4;
-	public static int pushSolenoid2 = 5;
+	public static int pushSolenoid1 = 3;
+	public static int pushSolenoid2 = 2;
 
 	//cameras
 	public static int cameraLow = 1;

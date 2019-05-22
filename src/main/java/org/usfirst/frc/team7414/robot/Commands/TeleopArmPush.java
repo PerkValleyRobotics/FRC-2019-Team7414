@@ -19,6 +19,7 @@ public class TeleopArmPush extends Command {
     public void execute() {
         Robot.arm.actuatePushPistons();
         finished = true;
+        System.out.println("execute button pressed");
     }
 
     protected void interrupted() {
