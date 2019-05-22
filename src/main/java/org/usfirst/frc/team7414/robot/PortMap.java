@@ -19,9 +19,6 @@ public class PortMap {
 	public static int shiftRight = 12;
 	public static int shiftLeft = 11;
 
-	//Xbox Buttons
-
-
 	//PWM
 	public static int driveBackLeft = 0;
 	public static int driveBackRight = 1;
