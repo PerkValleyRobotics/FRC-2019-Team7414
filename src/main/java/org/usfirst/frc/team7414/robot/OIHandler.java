@@ -2,8 +2,6 @@ package org.usfirst.frc.team7414.robot;
 
 import org.usfirst.frc.team7414.robot.Commands.TeleopArmPush;
 import org.usfirst.frc.team7414.robot.Commands.TeleopArmLift;
-import org.usfirst.frc.team7414.robot.Commands.TeleopMoveLeft;
-import org.usfirst.frc.team7414.robot.Commands.TeleopMoveRight;
 import org.usfirst.frc.team7414.robot.Commands.TeleopTurnLeft;
 import org.usfirst.frc.team7414.robot.Commands.TeleopTurnRight;
 
@@ -12,7 +10,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.XboxController;
 
 public class OIHandler {
-	
+
 	public static Joystick joystick1;
 	public static XboxController controller;
 
@@ -25,19 +23,17 @@ public class OIHandler {
 	public static JoystickButton turnLeftButton;
 
 	public OIHandler() {
+		//initalize controllers - joystick and xbox controller
 		joystick1 = new Joystick(PortMap.joystick);
-		controller = new XboxController(PortMap.controller);
+		controller = new XboxController(PortMap.controller); //this does not actually need to be connected
+		
+		//initalize joystick buttons and assign them to activate various commands
 		liftArmButton = new JoystickButton(joystick1, PortMap.liftPistonToggle);
 		pushArmButton = new JoystickButton(joystick1, PortMap.pushPistonsToggle);
-		moveLeftButton = new JoystickButton(joystick1, PortMap.shiftRight);
-		moveRightButton = new JoystickButton(joystick1, PortMap.shiftLeft);
 		turnRightButton = new JoystickButton(joystick1, PortMap.turnRight);
 		turnLeftButton = new JoystickButton(joystick1, PortMap.turnLeft);
-
 		liftArmButton.whenPressed(new TeleopArmLift());
 		pushArmButton.whenPressed(new TeleopArmPush());
-		moveLeftButton.whenPressed(new TeleopMoveLeft());
-		moveRightButton.whenPressed(new TeleopMoveRight());
 		turnRightButton.whenPressed(new TeleopTurnRight());
 		turnLeftButton.whenPressed(new TeleopTurnLeft());
 	}

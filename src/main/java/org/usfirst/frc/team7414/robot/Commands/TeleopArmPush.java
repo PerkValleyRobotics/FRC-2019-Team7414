@@ -17,6 +17,7 @@ public class TeleopArmPush extends Command {
     }
 
     public void execute() {
+        //mechanics of toggling arm pistons is handled by Arm.java class
         Robot.arm.actuatePushPistons();
         finished = true;
         System.out.println("execute button pressed");

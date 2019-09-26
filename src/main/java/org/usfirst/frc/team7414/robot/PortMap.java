@@ -14,10 +14,8 @@ public class PortMap {
 	public static int pushPistonsToggle = 5;
 	public static int liftPistonToggle = 6;
 	public static int straightBack = 7;
-	public static int turnLeft = 9;
-	public static int turnRight = 10;
-	public static int shiftRight = 12;
-	public static int shiftLeft = 11;
+	public static int turnLeft = 11;
+	public static int turnRight = 12;
 
 	//PWM
 	public static int driveBackLeft = 0;
@@ -39,10 +37,6 @@ public class PortMap {
 	public static int lighting2 = 4;
 	public static int liftEncoder1 = 1;
 	public static int liftEncoder2 = 2;
-	//public static int leftEncoder1 = 6;
-	//public static int leftEncoder2 = 7;
-	//public static int rightEncoder1 = 8;
-	//public static int rightEncoder2 = 9;
 	
 	//CAN Bus
 	public static int pdp = 0;

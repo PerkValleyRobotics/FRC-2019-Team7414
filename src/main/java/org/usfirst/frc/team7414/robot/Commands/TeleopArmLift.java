@@ -18,6 +18,7 @@ public class TeleopArmLift extends Command {
     }
 
     protected void execute() {
+        //mechanics of toggling piston is handled by Arm.java class
         Robot.arm.actuateLiftPiston();
         finished = true;
     }

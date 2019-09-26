@@ -12,6 +12,7 @@ public class TeleopTurnLeft extends Command {
     }
     
     protected boolean isFinished() {
+        //runs until "left turn" button is released
         return !OIHandler.turnLeftButton.get(); 
     }
 

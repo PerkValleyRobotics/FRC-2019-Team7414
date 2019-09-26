@@ -8,6 +8,7 @@ public class TeleopDrive extends Command {
 
 	public TeleopDrive() {
 		requires(Robot.difDrive);
+		//This is the default command, so it needs to be interruptible in order for other commands to run when desired
 		setInterruptible(true);
 	}
 	
@@ -17,6 +18,7 @@ public class TeleopDrive extends Command {
 	}
 	
 	protected void execute() {
+		//pass the joystick values to the drivetrain class
 		Robot.difDrive.drive(Robot.oi.getY(), Robot.oi.getX());
 	}
 
