@@ -45,6 +45,22 @@ public class Arm extends Subsystem {
         }
     }
 
+    public void pushOut() {
+        pushSolenoid.set(Value.kReverse);
+    }
+
+    public void pullIn() {
+        pushSolenoid.set(Value.kForward);
+    }
+
+    public void pushUp() {
+        liftSolenoid.set(Value.kReverse);
+    }
+
+    public void pushDown() {
+        liftSolenoid.set(Value.kForward);
+    }
+
     protected void initDefaultCommand() {
 		
     }

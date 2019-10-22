@@ -19,7 +19,7 @@ public class TeleopDrive extends Command {
 	
 	protected void execute() {
 		//pass the joystick values to the drivetrain class
-		Robot.difDrive.drive(Robot.oi.getY(), Robot.oi.getX());
+		Robot.difDrive.drive(Robot.oi.getLeftYPadValue(), Robot.oi.getLeftXPadValue());
 	}
 
 	protected void interrupted() {

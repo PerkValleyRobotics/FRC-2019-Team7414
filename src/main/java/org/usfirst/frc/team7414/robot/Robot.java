@@ -8,11 +8,11 @@
 package org.usfirst.frc.team7414.robot;
 
 import org.usfirst.frc.team7414.robot.Subsystems.*;
-import org.usfirst.frc.team7414.robot.Commands.CalibrateArmClaw;
-import org.usfirst.frc.team7414.robot.Commands.CalibrateDrive;
+import org.usfirst.frc.team7414.robot.Commands.*;
 
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.cameraserver.CameraServer;
@@ -67,11 +67,22 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		//run the scheduler every cycle
 		Scheduler.getInstance().run();
+
+		if (oi.getDpadValue() == 0) {
+			Scheduler.getInstance().add(new TeleopArmPushUp());
+		} else if (oi.getDpadValue() == 90) {
+			Scheduler.getInstance().add(new TeleopArmPushOut());
+		} else if (oi.getDpadValue() == 180) {
+			Scheduler.getInstance().add(new TeleopArmPushDown());
+		} else if (oi.getDpadValue() == 270) {
+			Scheduler.getInstance().add(new TeleopArmPullIn());
+		}
 		
 		lighting1.set(false);
 		lighting2.set(false);
 
 		//output data to SmartDashboard
+		SmartDashboard.putString("POV:", Integer.toString(oi.getDpadValue()));
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
 		SmartDashboard.putString("Current:", Double.toString((double)((int)(compressor.getCompressorCurrent()*100))/100));

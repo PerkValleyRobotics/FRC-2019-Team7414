@@ -57,7 +57,7 @@ public class DriveTrain extends Subsystem {
 		} else {
 			rotation += kCompensate;
 			//this will slow down the speed of the motors based on the joystick w/o button use
-			rotation /= 1.4;
+			rotation /= 1.1;
 			drive.arcadeDrive(speed, rotation, squaring);
 		}
 	}

@@ -27,7 +27,7 @@ public class TeleopClaw extends Command {
     protected void execute() {
         //if the button has been pressed:
         //If claw is out, retract it. Otherwise, push it out.
-        if (Robot.oi.getButtonPressed(PortMap.clawToggle)) {
+        if (Robot.oi.getControllerButtonPressed(PortMap.XButton)) {
             if (Claw.state.equals(ClawState.OUT)) {
                 Claw.state = ClawState.IN;
                 Claw.updateTime();

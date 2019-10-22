@@ -6,6 +6,9 @@ public class PortMap {
 	public static int joystick = 0;
 	public static int controller = 1;
 	
+	//Controller Buttons
+	public static int XButton = 3;
+
 	//Joystick Buttons
 	public static int curvatureDrive = 1;
 	public static int slowMode = 2;
