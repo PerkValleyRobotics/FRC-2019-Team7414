@@ -39,8 +39,8 @@ public class Robot extends TimedRobot {
 		difDrive = new DriveTrain();
 		claw = new Claw();
 		arm = new Arm();
-		climb = new Climber();
-		climbDrive = new ClimberDrive();
+		//climb = new Climber();
+		//climbDrive = new ClimberDrive();
 		
 		//start cameras
 		server = CameraServer.getInstance();
@@ -59,8 +59,8 @@ public class Robot extends TimedRobot {
 		lighting1.set(true);
 		lighting2.set(true);
 
-		SmartDashboard.putData("Calibrate Arm and Claw", new CalibrateArmClaw());
-		SmartDashboard.putData("Calibrate Drive", new CalibrateDrive());
+		//SmartDashboard.putData("Calibrate Arm and Claw", new CalibrateArmClaw());
+		//SmartDashboard.putData("Calibrate Drive", new CalibrateDrive());
 	}
 
 	@Override

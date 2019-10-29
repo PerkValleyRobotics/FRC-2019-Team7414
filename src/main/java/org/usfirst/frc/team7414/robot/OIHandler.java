@@ -16,16 +16,15 @@ public class OIHandler {
 
 	public static JoystickButton liftArmButton;
 	public static JoystickButton pushArmButton;
-	public static JoystickButton moveLeftButton;
-	public static JoystickButton moveRightButton;
-	public static JoystickButton clawButton;
+	//public static JoystickButton moveLeftButton;
+	//public static JoystickButton moveRightButton;
+	//public static JoystickButton clawButton;
 	public static JoystickButton turnRightButton;
 	public static JoystickButton turnLeftButton;
 
 	public OIHandler() {
 		//initalize controllers - joystick and xbox controller
 		joystick1 = new Joystick(PortMap.joystick);
-		controller = new XboxController(PortMap.controller); //this does not actually need to be connected
 		
 		//initalize joystick buttons and assign them to activate various commands
 		liftArmButton = new JoystickButton(joystick1, PortMap.liftPistonToggle);
