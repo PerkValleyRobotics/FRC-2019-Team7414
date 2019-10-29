@@ -13,7 +13,7 @@ public class PortMap {
 	public static int straightDrive = 4;
 	public static int pushPistonsToggle = 5;
 	public static int liftPistonToggle = 6;
-	public static int straightBack = 7;
+	public static int straightBack = 12;
 	public static int turnLeft = 7;
 	public static int turnRight = 8;
 
