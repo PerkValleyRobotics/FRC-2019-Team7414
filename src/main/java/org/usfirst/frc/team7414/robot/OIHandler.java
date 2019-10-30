@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.GenericHID;
 
 public class OIHandler {
 
@@ -91,5 +92,9 @@ public class OIHandler {
 
 	public double getLeftYPadValue() {
 		return -1*controller.getRawAxis(1);
+	}
+
+	public double getRightTrigger(){
+		return controller.getRawAxis(3);
 	}
 }

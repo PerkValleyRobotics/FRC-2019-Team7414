@@ -18,6 +18,8 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 
+import edu.wpi.first.wpilibj.GenericHID;
+
 public class Robot extends TimedRobot {
 	
 	public static DriveTrain difDrive;
@@ -32,6 +34,7 @@ public class Robot extends TimedRobot {
 	public static String vision;
 	public static DigitalOutput lighting1;
 	public static DigitalOutput lighting2;
+	
 	
 	@Override
 	public void robotInit() {
@@ -77,12 +80,15 @@ public class Robot extends TimedRobot {
 		} else if (oi.getDpadValue() == 270) {
 			Scheduler.getInstance().add(new TeleopArmPullIn());
 		}
+
+
 		
 		lighting1.set(false);
 		lighting2.set(false);
 
 		//output data to SmartDashboard
 		SmartDashboard.putString("POV:", Integer.toString(oi.getDpadValue()));
+		SmartDashboard.putString("Trigger:", Double.toString(oi.getRightTrigger()));
 		SmartDashboard.putBoolean("Compressor enabled:", compressor.enabled());
 		SmartDashboard.putBoolean("Pressure Switch:", compressor.getPressureSwitchValue());
 		SmartDashboard.putString("Current:", Double.toString((double)((int)(compressor.getCompressorCurrent()*100))/100));
